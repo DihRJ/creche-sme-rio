@@ -14,6 +14,7 @@ import DadosDaCrianca from "./telas/DadosDaCrianca";
 import Entrar from "./telas/Entrar";
 import EscolherUnidades from "./telas/EscolherUnidades";
 import Revisar from "./telas/Revisar";
+import Vulnerabilidades from "./telas/Vulnerabilidades";
 import { Aviso, Botao } from "./telas/provisorio-ui";
 
 function Layout({ children }: { children: React.ReactNode }) {
@@ -91,7 +92,7 @@ export default function App() {
             <Route path="/inscricao/:id/unidades" element={<RotaProtegida><EscolherUnidades /></RotaProtegida>} />
             <Route
               path="/inscricao/:id/vulnerabilidades"
-              element={<RotaProtegida><AguardandoDevC titulo="Vulnerabilidades" proxima="documentos" /></RotaProtegida>}
+              element={<RotaProtegida><Vulnerabilidades /></RotaProtegida>}
             />
             <Route
               path="/inscricao/:id/documentos"

@@ -49,7 +49,7 @@ ficaram sem ajuda, para nenhum jargão passar batido.
 ## Cronograma do brief
 
 - [x] 0:20 → 0:50 · kit de UI, fixtures, tokens de tema — **migrado para `web/`**
-- [ ] 0:50 → 1:50 · `web/src/telas/Vulnerabilidades.tsx`
+- [x] 0:50 → 1:50 · `web/src/telas/Vulnerabilidades.tsx` — **integrada**, rota já aponta para ela
 - [ ] 1:50 → 2:50 · `web/src/telas/Documentos.tsx`
 - [ ] 2:50 → 3:30 · `web/src/telas/MinhaInscricao.tsx`
 - [ ] 3:30 → 4:00 · troca do mock pela API real, acessibilidade, teste em 360px
