@@ -1,5 +1,7 @@
 # Vídeo de apresentação
 
+Acompanha o `Fila-Unica_SME-Rio.pptx` desta pasta.
+
 `fila-unica.webm` — 2min27s, percurso completo do app da família, do cadastro ao
 resultado. Gravado num navegador de verdade em 420×900, que é o alvo móvel do RNF1.
 
@@ -19,7 +21,8 @@ npm run dev                                                     # noutro termina
 node e2e/video.mjs
 ```
 
-Sai em `e2e/videos/`, que não é versionada — copie para cá o que for publicar.
+Sai em `fila-unica-app/web/e2e/videos/`, que não é versionada. O que for publicar
+se copia para esta pasta, ao lado do `.pptx`.
 
 O roteiro roda contra o **mock**, de propósito: é determinístico, não escreve em banco
 nenhum, e o cruzamento por CPF é estável, então a cena do CadÚnico confirmado acontece
