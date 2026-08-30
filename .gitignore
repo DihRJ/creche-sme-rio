@@ -8,3 +8,5 @@ __pycache__/
 *.png
 .playwright-mcp/
 .DS_Store
+CLAUDE.md
+BRIEFING.md
