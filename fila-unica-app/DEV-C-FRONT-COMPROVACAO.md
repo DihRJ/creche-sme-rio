@@ -37,7 +37,7 @@ fixtures em arquivos soltos e cole depois.
   - `nao_comprovado` → "Falta o comprovante. Este critério **não vai pontuar**."
 - [ ] Contador permanente no rodapé: **"Sua pontuação: X. Você declarou Y."** Quando X < Y, diga em
       uma frase quantos pontos estão sendo perdidos e o que fazer. É o RF4.3 antecipado para a
-      inscrição, e é o coração do projeto
+      inscrição, e é o coração do projeto/btw 
 - [ ] Nada de jargão: "família monoparental" ganha uma linha de explicação em português simples
 
 ### 1:50 → 2:50 · Documentos
