@@ -92,7 +92,16 @@ export default function EscolherUnidades() {
   const idsEscolhidos = useMemo(() => escolhidas.map((o) => o.oferta.id), [escolhidas]);
   const cheio = idsEscolhidos.length >= MAX_OPCOES;
 
-  /** E9 substitui a lista inteira; a ordem do array e a ordem de preferencia. */
+  /**
+   * E9 substitui a lista inteira; a ordem do array e a ordem de preferencia.
+   *
+   * Enquanto uma gravacao esta em voo, TODO botao de escolher e remover fica
+   * desabilitado, nao so o do cartao clicado. Sem isso ha corrida real: o payload
+   * e montado a partir de `idsEscolhidos`, que so atualiza quando a resposta chega,
+   * entao um segundo toque antes dela manda a lista velha e APAGA a escolha
+   * anterior, sem erro nenhum. Localhost esconde; a URL publica revelou, com
+   * 3 de 5 creches entrando num percurso que clicou cinco vezes.
+   */
   const gravar = useCallback(
     async (ids: string[], marcador: string) => {
       setSalvando(marcador);
@@ -249,6 +258,7 @@ export default function EscolherUnidades() {
               posicao={idsEscolhidos.indexOf(o.id) + 1}
               cheio={cheio}
               salvando={salvando === o.id}
+              bloqueado={!!salvando}
               aoEscolher={() => adicionar(o)}
               aoRemover={() => remover(o.id)}
             />
@@ -337,13 +347,16 @@ function Chip({
 }
 
 function CartaoUnidade({
-  oferta, escolhida, posicao, cheio, salvando, aoEscolher, aoRemover,
+  oferta, escolhida, posicao, cheio, salvando, bloqueado, aoEscolher, aoRemover,
 }: {
   oferta: Oferta;
   escolhida: boolean;
   posicao: number;
   cheio: boolean;
+  /** Esta oferta e a que esta sendo gravada agora. */
   salvando: boolean;
+  /** Alguma gravacao esta em voo, de qualquer oferta. */
+  bloqueado: boolean;
   aoEscolher: () => void;
   aoRemover: () => void;
 }) {
@@ -377,13 +390,13 @@ function CartaoUnidade({
             <span className="num text-[12px] font-bold" style={{ color: "var(--ganho)" }}>
               {posicao}ª opção
             </span>
-            <Botao variante="fantasma" desabilitado={salvando} aoClicar={aoRemover}>
+            <Botao variante="fantasma" desabilitado={bloqueado} aoClicar={aoRemover}>
               Remover
             </Botao>
           </div>
         ) : (
           <div className="shrink-0">
-            <Botao variante="secundario" desabilitado={cheio || salvando} aoClicar={aoEscolher}>
+            <Botao variante="secundario" desabilitado={cheio || bloqueado} aoClicar={aoEscolher}>
               {salvando ? "..." : "Escolher"}
             </Botao>
           </div>
