@@ -1,0 +1,283 @@
+/**
+ * Tokens e estilos do kit de UI do app da família.
+ *
+ * CSS puro, sem Tailwind e sem pré-processador: o kit inteiro vive dentro de
+ * `src/ui/` e é importado por `ui/index.tsx`, não pelo `index.css`. Assim nenhuma
+ * tela do Dev B precisa mudar para o kit funcionar, e não há dependência nova no
+ * `package.json` para o `npm ci` do Render tropeçar.
+ *
+ * A paleta base é a mesma do painel analítico (`app/src/app/globals.css`), que já
+ * foi validada para daltonismo — o PLANO.md (P10) manda o sistema visual sobreviver
+ * ao protótipo, e repintar aqui criaria duas identidades para o mesmo projeto.
+ *
+ * Prefixo `fu-` (Fila Única) em tudo: o `index.css` do template do Vite ainda tem
+ * regras globais em `h1`, `h2`, `p` e `#root`, e sem prefixo elas colidem.
+ */
+
+/* ────────────────────────────  tokens  ──────────────────────────── */
+
+:root {
+  color-scheme: light;
+
+  /* base, herdada do painel */
+  --surface-0: #f6f5f2;
+  --surface-1: #fcfcfb;
+  --surface-2: #efeeea;
+  --border:    #dedcd5;
+  --text-1:    #0b0b0b;   /* 18.1:1 sobre surface-0 */
+  --text-2:    #52514e;   /*  7.6:1 — corpo secundário */
+  --text-3:    #7d7b75;   /*  4.6:1 — mínimo AA para texto normal. Não use abaixo disto */
+  --fila:      #eb6834;
+  --ociosa:    #2a78d6;
+  --ganho:     #1baf7a;
+  --perda:     #e34948;
+
+  /* estados por critério (RF2.3).
+   * A cor NUNCA é o único sinal: todo chip carrega ícone e rótulo em texto
+   * (WCAG 1.4.1). Verde e vermelho são indistinguíveis em deuteranopia — quem
+   * separa os dois na tela é o ✓ contra o ! e a frase. A cor é reforço. */
+  --confirmado-fg:  #0f7350;   /* 4.8:1 sobre o próprio fundo */
+  --confirmado-bg:  #e6f6ef;
+  --confirmado-br:  #a8e0c8;
+
+  --pendente-fg:    #1c5fae;   /* 5.1:1 */
+  --pendente-bg:    #e6f0fb;
+  --pendente-br:    #a9caee;
+
+  --faltando-fg:    #b3282b;   /* 5.4:1 */
+  --faltando-bg:    #fdecec;
+  --faltando-br:    #f2b8b8;
+
+  --neutro-fg:      #52514e;
+  --neutro-bg:      #efeeea;
+  --neutro-br:      #dedcd5;
+
+  --foco:           #2a78d6;
+  --raio:           12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --surface-0: #121211;
+    --surface-1: #1a1a19;
+    --surface-2: #232322;
+    --border:    #35352f;
+    --text-1:    #ffffff;
+    --text-2:    #c3c2b7;
+    --text-3:    #8e8d84;
+    --fila:      #d95926;
+    --ociosa:    #3987e5;
+    --ganho:     #199e70;
+    --perda:     #e66767;
+
+    --confirmado-fg: #5fd6a6;
+    --confirmado-bg: #10261e;
+    --confirmado-br: #235f47;
+
+    --pendente-fg:   #7ab5f2;
+    --pendente-bg:   #10202f;
+    --pendente-br:   #245179;
+
+    --faltando-fg:   #f39494;
+    --faltando-bg:   #2a1516;
+    --faltando-br:   #6e3234;
+
+    --neutro-fg:     #c3c2b7;
+    --neutro-bg:     #232322;
+    --neutro-br:     #35352f;
+
+    --foco:          #7ab5f2;
+  }
+}
+
+/* Alternância manual, para o botão de tema e para testar os dois sem mexer no SO. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-0: #121211; --surface-1: #1a1a19; --surface-2: #232322;
+  --border: #35352f; --text-1: #ffffff; --text-2: #c3c2b7; --text-3: #8e8d84;
+  --fila: #d95926; --ociosa: #3987e5; --ganho: #199e70; --perda: #e66767;
+  --confirmado-fg: #5fd6a6; --confirmado-bg: #10261e; --confirmado-br: #235f47;
+  --pendente-fg:   #7ab5f2; --pendente-bg:   #10202f; --pendente-br:   #245179;
+  --faltando-fg:   #f39494; --faltando-bg:   #2a1516; --faltando-br:   #6e3234;
+  --neutro-fg: #c3c2b7; --neutro-bg: #232322; --neutro-br: #35352f;
+  --foco: #7ab5f2;
+}
+
+/* Mapa tom → cor. Todo componente com `data-tom` herda os três de uma vez. */
+[data-tom="neutro"]     { --tom-fg: var(--neutro-fg);     --tom-bg: var(--neutro-bg);     --tom-br: var(--neutro-br); }
+[data-tom="confirmado"] { --tom-fg: var(--confirmado-fg); --tom-bg: var(--confirmado-bg); --tom-br: var(--confirmado-br); }
+[data-tom="pendente"]   { --tom-fg: var(--pendente-fg);   --tom-bg: var(--pendente-bg);   --tom-br: var(--pendente-br); }
+[data-tom="faltando"]   { --tom-fg: var(--faltando-fg);   --tom-bg: var(--faltando-bg);   --tom-br: var(--faltando-br); }
+
+/* ────────────────────────────  base  ──────────────────────────── */
+
+/* Sem `body { margin: 0 }` e afins: isso é do `index.css`, que é do Dev B.
+ * Aqui só o que o kit precisa para não depender de reset nenhum. */
+
+.fu-cartao {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--raio);
+}
+
+/* Números alinham em coluna: pontuação, fila e vagas são lidos comparando. */
+.fu-num { font-variant-numeric: tabular-nums; }
+
+/* Só para leitor de tela. */
+.fu-sr {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* Foco visível em tudo que recebe teclado. Sem isto a inscrição fica impossível
+ * de preencher no teclado — que é RNF6, não capricho. */
+.fu-botao:focus-visible,
+.fu-campo__input:focus-visible {
+  outline: 2px solid var(--foco);
+  outline-offset: 2px;
+}
+
+/* ────────────────────────────  Botao  ──────────────────────────── */
+
+.fu-botao {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px;            /* alvo de toque: a família preenche isto em pé, no ponto de ônibus */
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  font: inherit; font-size: 15px; font-weight: 500; line-height: 1.2;
+  cursor: pointer;
+  transition: background-color .15s, opacity .15s, color .15s;
+}
+.fu-botao:disabled { opacity: .5; cursor: not-allowed; }
+.fu-botao--largura-total { width: 100%; }
+
+.fu-botao--primario { background: var(--text-1); color: var(--surface-0); }
+.fu-botao--primario:hover:not(:disabled) { opacity: .9; }
+
+.fu-botao--secundario { background: var(--surface-1); color: var(--text-1); border-color: var(--border); }
+.fu-botao--secundario:hover:not(:disabled) { background: var(--surface-2); }
+
+.fu-botao--texto {
+  background: none; color: var(--text-2); padding: 10px 4px;
+  text-decoration: underline; text-underline-offset: 4px;
+}
+.fu-botao--texto:hover:not(:disabled) { color: var(--text-1); }
+
+.fu-botao--perigo { background: var(--faltando-bg); color: var(--faltando-fg); border-color: var(--faltando-br); }
+.fu-botao--perigo:hover:not(:disabled) { filter: brightness(.95); }
+
+.fu-girador { animation: fu-girar 1s linear infinite; flex: none; }
+@keyframes fu-girar { to { transform: rotate(360deg); } }
+
+/* ────────────────────────────  Campo  ──────────────────────────── */
+
+.fu-campo { display: flex; flex-direction: column; gap: 6px; text-align: left; }
+
+.fu-campo__rotulo { font-size: 14px; font-weight: 500; color: var(--text-1); }
+.fu-campo__obrigatorio { color: var(--faltando-fg); }
+.fu-campo__ajuda { font-size: 13px; line-height: 1.35; color: var(--text-2); margin: 0; }
+
+.fu-campo__input {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-1);
+  color: var(--text-1);
+  font: inherit;
+  /* 16px não é escolha estética: abaixo disso o Safari do iPhone dá zoom no foco
+   * e joga o formulário para fora da tela. */
+  font-size: 16px;
+}
+.fu-campo__input::placeholder { color: var(--text-3); }
+.fu-campo__input[aria-invalid="true"] { border-color: var(--faltando-br); }
+
+.fu-campo__erro { font-size: 13px; font-weight: 500; color: var(--faltando-fg); margin: 0; }
+
+/* ────────────────────────────  Chip  ──────────────────────────── */
+
+.fu-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--tom-br);
+  border-radius: 999px;
+  background: var(--tom-bg);
+  color: var(--tom-fg);
+  font-size: 13px; font-weight: 500; line-height: 1.4;
+}
+
+/* ────────────────────────────  Aviso  ──────────────────────────── */
+
+.fu-aviso {
+  padding: 12px 16px;
+  border: 1px solid var(--tom-br);
+  border-radius: var(--raio);
+  background: var(--tom-bg);
+  color: var(--tom-fg);
+  font-size: 14px; line-height: 1.55;
+  text-align: left;
+}
+.fu-aviso__titulo { margin: 0 0 4px; font-weight: 600; }
+.fu-aviso__corpo > * { margin: 0; }
+
+/* ────────────────────────  Carregando / Vazio  ──────────────────────── */
+
+.fu-carregando { display: flex; flex-direction: column; gap: 8px; }
+.fu-carregando__linha {
+  height: 52px;
+  border-radius: var(--raio);
+  background: var(--surface-2);
+  animation: fu-pulsar 1.6s ease-in-out infinite;
+}
+@keyframes fu-pulsar { 50% { opacity: .45; } }
+
+.fu-vazio {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 40px 24px;
+  text-align: center;
+}
+.fu-vazio__titulo { margin: 0; font-size: 15px; font-weight: 600; color: var(--text-1); }
+.fu-vazio__descricao { margin: 0; max-width: 38ch; font-size: 14px; color: var(--text-2); }
+
+/* ────────────────────────────  Passos  ──────────────────────────── */
+
+.fu-passos { list-style: none; margin: 0; padding: 0; text-align: left; }
+.fu-passos--horizontal { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.fu-passos--vertical   { display: flex; flex-direction: column; }
+
+.fu-passo { display: flex; align-items: center; gap: 8px; }
+.fu-passos--vertical .fu-passo { align-items: stretch; gap: 12px; }
+
+.fu-passo__coluna { display: flex; flex-direction: column; align-items: center; }
+
+.fu-passo__marca {
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; flex: none;
+  border: 1px solid var(--tom-br);
+  border-radius: 999px;
+  background: var(--tom-bg);
+  color: var(--tom-fg);
+  font-size: 13px; font-weight: 600;
+}
+/* O passo atual é o único preenchido: contraste máximo, para achar de relance. */
+.fu-passo[data-estado="atual"] .fu-passo__marca {
+  background: var(--text-1); color: var(--surface-0); border-color: var(--text-1);
+}
+
+.fu-passo__trilho { flex: 1; width: 1px; margin: 4px 0; background: var(--border); }
+.fu-passo__conector { width: 16px; height: 1px; background: var(--border); }
+
+.fu-passo__titulo { font-size: 14px; color: var(--text-3); }
+.fu-passo[data-estado="concluido"] .fu-passo__titulo { color: var(--text-2); }
+.fu-passo[data-estado="atual"]     .fu-passo__titulo { color: var(--text-1); font-weight: 600; }
+.fu-passos--vertical .fu-passo__titulo { padding-bottom: 20px; }
+
+/* ────────────────────────────  acessibilidade  ──────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .fu-girador, .fu-carregando__linha { animation: none; }
+  .fu-botao { transition: none; }
+}
