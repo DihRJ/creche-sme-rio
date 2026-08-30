@@ -36,7 +36,19 @@ Termine em "Fila Única + régua valendo" e leia os quatro números na tela:
 
 "Mesmas vagas. Mesma régua. Mesmo orçamento. Nenhuma sala nova, nenhum professor novo."
 
-## 4:30–5:20 — Por que dá para usar amanhã
+## 4:30–5:10 — A cena que fecha: auditoria
+Role até a seção **Auditoria** e deixe no primeiro filtro.
+
+"Esta família declarou CadÚnico, doença crônica grave e espera no ano anterior. Cinquenta e seis
+pontos de direito. Concorreu com zero, porque nada foi validado. Ela perdeu a primeira opção num
+empate decidido por data de inscrição."
+
+Aponte para a coluna da direita. "E esta explicação foi escrita pelo Claude, a partir dos números
+que o motor produziu. O motor decide, o Claude explica. Isso importa porque a fila da creche é
+cobrada no balcão da unidade e acompanhada por órgãos de controle: um algoritmo que ninguém
+consegue explicar não é adotável, por mais correto que seja."
+
+## 5:10–5:35 — Por que dá para usar amanhã
 - Roda do CSV cru ao resultado com um comando, sobre as quatro bases reais.
 - A régua é uma tabela. A SME muda o peso do CadÚnico e roda de novo.
 - O resultado é auditável: se a criança não entrou onde queria, dá para mostrar exatamente
@@ -44,7 +56,7 @@ Termine em "Fila Única + régua valendo" e leia os quatro números na tela:
   de controle.
 - Não substitui o sistema. Entra como o módulo de classificação, no lugar do que já existe.
 
-## 5:20–6:00 — O que não está pronto (diga você antes que perguntem)
+## 5:35–6:00 — O que não está pronto (diga você antes que perguntem)
 "Três coisas. Não rodamos na base viva de 2026, isso depende de acesso, não de código.
 A proximidade é por bairro, porque o dado anonimizado não traz endereço. E o achado do CadÚnico
 precisa ser confirmado na base real antes de virar decisão — se ele se confirmar, é a correção

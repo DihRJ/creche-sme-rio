@@ -50,3 +50,23 @@ export type Cenarios = {
 };
 export const C = cenarios as Cenarios;
 export const ORDEM = ["atual", "fila_unica", "com_bairro", "regua_viva"] as const;
+
+import casos from "../../public/data/casos.json";
+import explicacoes from "../../public/data/explicacoes.json";
+export type Opcao = {
+  posicao: number; unidade: string; grupamento: string; turno: string;
+  capacidade: number; candidatos: number; nota_de_corte: number | null; conseguiu: boolean;
+};
+export type Criterio = { criterio: string; pontos: number };
+export type Caso = {
+  id: string; pontos: number; desempates: number;
+  criterios_validados: Criterio[]; criterios_so_declarados: Criterio[];
+  opcoes: Opcao[];
+  resultado_fila_unica: { conseguiu: boolean; unidade: string | null; opcao: number | null };
+  resultado_processo_atual: { conseguiu: boolean; unidade: string | null };
+};
+export const CASOS = (casos as { ano: number; casos: Caso[] }).casos;
+export const EXPLICACOES = explicacoes as Record<string, string>;
+/** Pontos que a família teria se todos os critérios declarados fossem validados. */
+export const pontosDeDireito = (c: Caso) =>
+  c.pontos + c.criterios_so_declarados.reduce((s, x) => s + x.pontos, 0);

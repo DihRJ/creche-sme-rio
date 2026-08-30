@@ -1,6 +1,6 @@
 "use client";
 import {
-  Bar, BarChart, CartesianGrid, Cell, Line, LineChart, ResponsiveContainer,
+  Bar, BarChart, CartesianGrid, ResponsiveContainer,
   Tooltip, XAxis, YAxis, LabelList,
 } from "recharts";
 import { CRE, CRE_NOME, FUNIL, M, REGUA, UNIDADES, fmt } from "@/lib/data";
@@ -30,8 +30,8 @@ export function CreChart() {
             <YAxis tick={axis} tickLine={false} axisLine={false} width={48}
                    tickFormatter={(v) => (v >= 1000 ? `${v / 1000}k` : v)} />
             <Tooltip content={<Tip />} cursor={{ fill: "var(--surface-2)" }} />
-            <Bar dataKey="fila" name="Crianças na fila" fill="var(--fila)" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="ociosas" name="Vagas ociosas" fill="var(--ociosa)" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="fila" isAnimationActive={false} name="Crianças na fila" fill="var(--fila)" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="ociosas" isAnimationActive={false} name="Vagas ociosas" fill="var(--ociosa)" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </>
@@ -62,8 +62,8 @@ export function OpcaoChart() {
             <YAxis tick={axis} tickLine={false} axisLine={false} width={48}
                    tickFormatter={(v) => (v >= 1000 ? `${v / 1000}k` : v)} />
             <Tooltip content={<Tip />} cursor={{ fill: "var(--surface-2)" }} />
-            <Bar dataKey="atual" name="Processo atual" fill="var(--text-3)" radius={[4, 4, 0, 0]} />
-            <Bar dataKey="unica" name="Fila Única" fill="var(--ganho)" radius={[4, 4, 0, 0]}>
+            <Bar dataKey="atual" isAnimationActive={false} name="Processo atual" fill="var(--text-3)" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="unica" isAnimationActive={false} name="Fila Única" fill="var(--ganho)" radius={[4, 4, 0, 0]}>
               <LabelList dataKey="unica" position="top" formatter={(v) => (Number(v) > 3000 ? fmt(Number(v)) : "")}
                          style={{ fontSize: 11, fill: "var(--text-2)" }} />
             </Bar>
@@ -85,19 +85,17 @@ export function FunilChart() {
       table={<Table head={["Ano", "Convocadas e perdidas", "Matricularam", "Só fila de espera"]}
         rows={FUNIL.map((f) => [f.ano, fmt(f.convocadas_e_perdidas), fmt(f.matricularam), fmt(f.so_fila)])} />}>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={d} margin={{ top: 24, right: 40, left: 4, bottom: 4 }}>
+        <BarChart data={d} margin={{ top: 24, right: 8, left: 4, bottom: 4 }}>
           {grid}
           <XAxis dataKey="ano" tick={axis} tickLine={false} axisLine={{ stroke: "var(--grid)" }} />
           <YAxis tick={axis} tickLine={false} axisLine={false} width={48}
                  tickFormatter={(v) => (v >= 1000 ? `${v / 1000}k` : v)} />
-          <Tooltip content={<Tip />} cursor={{ stroke: "var(--grid)" }} />
-          <Line type="monotone" dataKey="perdidas" name="Crianças" stroke="var(--perda)" strokeWidth={2}
-                dot={{ r: 4, strokeWidth: 2, stroke: "var(--surface-1)", fill: "var(--perda)" }}
-                activeDot={{ r: 6 }}>
+          <Tooltip content={<Tip />} cursor={{ fill: "var(--surface-2)" }} />
+          <Bar dataKey="perdidas" isAnimationActive={false} name="Crianças" fill="var(--perda)" radius={[4, 4, 0, 0]}>
             <LabelList dataKey="perdidas" position="top" formatter={(v) => fmt(Number(v))}
                        style={{ fontSize: 11, fill: "var(--text-2)" }} />
-          </Line>
-        </LineChart>
+          </Bar>
+        </BarChart>
       </ResponsiveContainer>
     </ChartFrame>
   );
@@ -138,8 +136,8 @@ export function ReguaChart() {
             <YAxis type="category" dataKey="nome" tick={{ ...axis, fontSize: 11 }} tickLine={false}
                    axisLine={false} width={230} />
             <Tooltip content={<Tip />} cursor={{ fill: "var(--surface-2)" }} />
-            <Bar dataKey="declarou" name="Declararam" fill="var(--text-3)" radius={[0, 4, 4, 0]} />
-            <Bar dataKey="validou" name="Validados" fill="var(--fila)" radius={[0, 4, 4, 0]}>
+            <Bar dataKey="declarou" isAnimationActive={false} name="Declararam" fill="var(--text-3)" radius={[0, 4, 4, 0]} />
+            <Bar dataKey="validou" isAnimationActive={false} name="Validados" fill="var(--fila)" radius={[0, 4, 4, 0]}>
               <LabelList dataKey="pct" position="right" formatter={(v) => `${v}%`}
                          style={{ fontSize: 11, fill: "var(--text-2)" }} />
             </Bar>

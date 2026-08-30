@@ -104,11 +104,20 @@ o painel e o deploy. Três decisões que saíram dessa conversa e mudaram o resu
 - O achado da validação em 6,8% do CadÚnico apareceu ao cruzar `resposta` com `confirmado` na
   Query B, uma coluna que o dicionário descreve em uma linha e que ninguém pediu para olhar.
 
-**Dentro da aplicação.** O painel publicado é estático de propósito: dado de criança da rede
-pública não deve trafegar para um modelo de linguagem para produzir um gráfico. O Claude entra
-na camada seguinte, já desenhada e não implementada hoje: explicar em linguagem natural, para o
-diretor da unidade, por que determinada criança está naquela posição da fila, e redigir a
-convocação da família. Está listado abaixo como próximo passo, não como entrega.
+**Dentro da aplicação.** A seção **Auditoria** do painel usa o Claude para explicar, em português
+de servidor público, por que cada criança ficou onde ficou: qual foi a pontuação que valeu, qual
+era a nota de corte da unidade que ela queria, e — o caso mais importante — quais critérios a
+família declarou, quanto eles valeriam e por que não contaram por falta de validação.
+
+A divisão de trabalho é deliberada e é o ponto de engenharia da coisa: **o motor decide, o Claude
+explica.** Todo número exibido sai do algoritmo determinístico; o modelo recebe esses números já
+estruturados e só traduz. Ele não pontua, não ordena e não reclassifica ninguém. As explicações
+são geradas no build (`pipeline/06_explicar.py`, Claude Sonnet 5, ~US$ 0,32 para 60 casos) e
+servidas como texto estático, então a demo não depende de rede e nenhum dado de criança trafega
+para um modelo em produção.
+
+Isso não é enfeite. A fila da creche é acompanhada por órgãos de controle e cobrada no balcão da
+unidade: um algoritmo que ninguém consegue explicar não é adotável, por mais correto que seja.
 
 ---
 
@@ -157,7 +166,7 @@ O pipeline lê os `.csv.gz` direto, sem descompactar.
 - Distância porta a porta. Hoje a proximidade é por bairro, porque o dado anonimizado só expõe
   bairro e CEP.
 - 348 das 872 unidades não têm coordenada no catálogo público, então o mapa cobre a rede pública.
-- A camada de convocação assistida (explicar a posição na fila e redigir o contato com a família).
+- A camada de convocação assistida (redigir e disparar o contato com a família nos canais que ela usa).
 - **O alerta sobre a validação do CadÚnico precisa ser confirmado na base real antes de virar
   decisão.** Os dados são anonimizados e a própria SME adverte que valores absolutos não
   reproduzem a realidade. O que a base preserva, e é o que medimos, é a lógica do processo.

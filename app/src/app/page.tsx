@@ -1,6 +1,7 @@
 "use client";
 import { CreChart, FunilChart, Mapa, ReguaChart } from "@/components/charts";
 import { Section, Stat, ThemeToggle } from "@/components/ui";
+import { Auditoria } from "@/components/auditoria";
 import { Simulador } from "@/components/simulador";
 import { C, fmt } from "@/lib/data";
 
@@ -130,6 +131,13 @@ export default function Home() {
         </div>
       </Section>
 
+      <Section
+        kicker="Auditoria"
+        title="Toda decisão da fila tem que caber numa frase que a família entenda"
+        lede={<>A fila da creche é acompanhada por órgãos de controle e cobrada no balcão da unidade. Um algoritmo que ninguém consegue explicar não serve, por mais correto que seja. Aqui o motor entrega os números e o Claude escreve a explicação. Comece pelo primeiro filtro: são as famílias que declararam um direito, não tiveram a comprovação validada e concorreram com pontuação menor do que a que lhes cabia.</>}>
+        <Auditoria />
+      </Section>
+
       {/* ── Honestidade ───────────────────────────────────────────────── */}
       <Section
         kicker="O que está pronto e o que não está"
@@ -143,6 +151,7 @@ export default function Home() {
               <li>Reconstrução da régua oficial de pontuação ano a ano, incluindo a mudança de 2023 para 2024.</li>
               <li>Capacidade derivada de turmas × teto normativo de 25, checada contra o p90 observado.</li>
               <li>Este painel, estático, sem backend, acessível e com tabela equivalente em cada gráfico.</li>
+              <li>Explicação auditável de cada alocação em português, gerada pelo Claude sobre os números do motor.</li>
             </ul>
           </div>
           <div className="card p-5">

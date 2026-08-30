@@ -1,0 +1,3311 @@
+{
+ "ano": 2025,
+ "casos": [
+  {
+   "id": "aluno_0012265",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "Criança aguardou em fila de espera no ano anterior sem ter sido atendida?",
+     "pontos": 2
+    },
+    {
+     "criterio": "A criança e/ou alguém do núcleo familiar apresentam doenças crônicas graves?",
+     "pontos": 3
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM DOUTOR ANTÔNIO MONTEIRO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 51,
+     "candidatos": 51,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CRECHE COMUNITÁRIA ALEGRIA DA CRIANÇA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 20,
+     "candidatos": 20,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE COMUNITÁRIA ALEGRIA DA CRIANÇA",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CM DOUTOR ANTÔNIO MONTEIRO"
+   }
+  },
+  {
+   "id": "aluno_0140902",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM RAUL CORTEZ",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 54,
+     "candidatos": 54,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CRECHE COMUNITÁRIA JARDIM FELIZ",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 29,
+     "candidatos": 29,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 3,
+     "unidade": "CP INSTITUTO CONSTRUINDO AMANHÃ",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 45,
+     "candidatos": 45,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE COMUNITÁRIA JARDIM FELIZ",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0114807",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Criança aguardou em fila de espera no ano anterior sem ter sido atendida?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    },
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Criança aguardou em fila de espera no ano anterior sem ter sido atendida?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CENTRO INTEGRADO SÃO JOSÉ",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 31,
+     "candidatos": 31,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP SEMENTE DE AMOR",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 63,
+     "candidatos": 63,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM LUZES DO AMANHÃ",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 45,
+     "candidatos": 45,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "EDI SENHORA PERCILIANA PEREIRA DE ALVARENGA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 8,
+     "candidatos": 8,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "EDI MARIA BERALDA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 25,
+     "candidatos": 25,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP SEMENTE DE AMOR",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP SEMENTE DE AMOR"
+   }
+  },
+  {
+   "id": "aluno_0118345",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "Existe algum membro do núcleo familiar que é presidiário ou ex-presidiário nos últimos 5 anos?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM LUÍS DE SOUZA DA COSTA BARROS",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 15,
+     "candidatos": 15,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM SIMONE DE BEAUVOIR",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 49,
+     "candidatos": 44,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM LUIZA DE BARROS DE SÁ FREIRE",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 36,
+     "candidatos": 34,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "EDI WESLEY GUILBER RODRIGUES DE ANDRADE",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 29,
+     "candidatos": 29,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "CM PROFESSORA JUREMA GOMES SAMPAIO DELFIM",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 34,
+     "candidatos": 28,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM SIMONE DE BEAUVOIR",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CM LUÍS DE SOUZA DA COSTA BARROS"
+   }
+  },
+  {
+   "id": "aluno_0000871",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O candidato é refugiado?",
+     "pontos": 2
+    },
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI ANÍSIO TEIXEIRA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 22,
+     "candidatos": 22,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM ENGENHO DA RAINHA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 30,
+     "candidatos": 30,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "EDI HERMENEGILDO DE BARROS",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 56,
+     "candidatos": 49,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "EDI HERMENEGILDO DE BARROS",
+    "opcao": 3
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "EDI HERMENEGILDO DE BARROS"
+   }
+  },
+  {
+   "id": "aluno_0157710",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE PEQUENA CANAÃ",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 8,
+     "candidatos": 8,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CRECHE COMUNITÁRIA TIA NEIDE - CAMPO GRANDE",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 21,
+     "candidatos": 21,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM CRIANDO O FUTURO",
+     "grupamento": "Bercario",
+     "turno": "Parcial",
+     "capacidade": 64,
+     "candidatos": 48,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "CP SOLDADINHOS DE DEUS",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 13,
+     "candidatos": 13,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "CP INSTITUTO FRUTIFICAR",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 17,
+     "candidatos": 17,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE COMUNITÁRIA TIA NEIDE - CAMPO GRANDE",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE PEQUENA CANAÃ"
+   }
+  },
+  {
+   "id": "aluno_0098235",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CENTRO CULTURAL MONTESSORI - SÃO CRISTÓVÃO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 20,
+     "candidatos": 20,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM ARARA AZUL",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 8,
+     "candidatos": 8,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM FRANCISCO ALVES",
+     "grupamento": "Maternal I",
+     "turno": "Parcial",
+     "capacidade": 81,
+     "candidatos": 81,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 4,
+     "unidade": "CM VASQUINHO",
+     "grupamento": "Maternal I",
+     "turno": "Parcial",
+     "capacidade": 34,
+     "candidatos": 25,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "CP CRECHE DO TUIUTI",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 25,
+     "candidatos": 25,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM FRANCISCO ALVES",
+    "opcao": 3
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CM FRANCISCO ALVES"
+   }
+  },
+  {
+   "id": "aluno_0137797",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI PROFESSORA GIOVANA BANSI",
+     "grupamento": "Bercario",
+     "turno": "Parcial",
+     "capacidade": 30,
+     "candidatos": 30,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "EDI PROFESSORA TÂNIA MARIA LARRUBIA GOMES",
+     "grupamento": "Bercario",
+     "turno": "Parcial",
+     "capacidade": 25,
+     "candidatos": 25,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "EDI JOSÉ EPHIM MINDLIN",
+     "grupamento": "Bercario",
+     "turno": "Parcial",
+     "capacidade": 77,
+     "candidatos": 77,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 4,
+     "unidade": "CM JOSÉ FÉLIX",
+     "grupamento": "Bercario",
+     "turno": "Parcial",
+     "capacidade": 73,
+     "candidatos": 73,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "CP ASSOCIAÇÃO RECREATIVA PINGUINHO DE GENTE",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 33,
+     "candidatos": 33,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "EDI JOSÉ EPHIM MINDLIN",
+    "opcao": 3
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0135536",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "Criança aguardou em fila de espera no ano anterior sem ter sido atendida?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI PROFESSORA TÂNIA MARIA LARRUBIA GOMES",
+     "grupamento": "Bercario",
+     "turno": "Parcial",
+     "capacidade": 25,
+     "candidatos": 25,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM MANÉ GARRINCHA II",
+     "grupamento": "Bercario",
+     "turno": "Parcial",
+     "capacidade": 59,
+     "candidatos": 56,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM MANÉ GARRINCHA II",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0009704",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE COMUNITÁRIA CRIANÇA FELIZ",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 12,
+     "candidatos": 12,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CRECHE CASULO AGOSTINHO - VERIDIANA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 47,
+     "candidatos": 47,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 3,
+     "unidade": "EDI MEDALHISTA OLÍMPICA POLIANA OKIMOTO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 31,
+     "candidatos": 31,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "EDI MEDALHISTA OLÍMPICO ERLON DE SOUZA SILVA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 33,
+     "candidatos": 33,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE CASULO AGOSTINHO - VERIDIANA",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE CASULO AGOSTINHO - VERIDIANA"
+   }
+  },
+  {
+   "id": "aluno_0065181",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    },
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM RIO NOVO - RIO DAS FLORES",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 7,
+     "candidatos": 7,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "EDI ANNA MARIA NIEMEYER",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 50,
+     "candidatos": 50,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "EDI PROFESSORA MATILDE ROSA LOPES DE ARAUJO",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 55,
+     "candidatos": 55,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 4,
+     "unidade": "CM BENEDITA SIQUEIRA LOPES",
+     "grupamento": "Maternal Ii",
+     "turno": "Parcial",
+     "capacidade": 61,
+     "candidatos": 61,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "EDI ESCRITORA CLARICE LISPECTOR",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 28,
+     "candidatos": 28,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "EDI PROFESSORA MATILDE ROSA LOPES DE ARAUJO",
+    "opcao": 3
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CM BENEDITA SIQUEIRA LOPES"
+   }
+  },
+  {
+   "id": "aluno_0092765",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM VILA PROGRESSO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 13,
+     "candidatos": 13,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM VILA KENNEDY",
+     "grupamento": "Maternal I",
+     "turno": "Parcial",
+     "capacidade": 61,
+     "candidatos": 43,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM MULHERES DO QUAFÁ",
+     "grupamento": "Maternal I",
+     "turno": "Parcial",
+     "capacidade": 101,
+     "candidatos": 96,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM VILA KENNEDY",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CM MULHERES DO QUAFÁ"
+   }
+  },
+  {
+   "id": "aluno_0133227",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE CARDEAL CÂMARA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 65,
+     "candidatos": 65,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM JOSUÉ DE CASTRO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 30,
+     "candidatos": 30,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM JOSUÉ DE CASTRO",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE CARDEAL CÂMARA"
+   }
+  },
+  {
+   "id": "aluno_0087463",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Criança aguardou em fila de espera no ano anterior sem ter sido atendida?",
+     "pontos": 2
+    },
+    {
+     "criterio": "A criança e/ou alguém do núcleo familiar apresentam doenças crônicas graves?",
+     "pontos": 3
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI MARIA DO CARMO SOUZA PIRAN",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 0,
+     "candidatos": 0,
+     "nota_de_corte": null,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM PROFESSORA REGINA MARIA DA MATTA MONTEZANO",
+     "grupamento": "Maternal Ii",
+     "turno": "Parcial",
+     "capacidade": 4,
+     "candidatos": 4,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM PROFESSORA REGINA MARIA DA MATTA MONTEZANO",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CM PROFESSORA REGINA MARIA DA MATTA MONTEZANO"
+   }
+  },
+  {
+   "id": "aluno_0127238",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI PROFESSORA EDITH MARQUES DE SOUZA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 12,
+     "candidatos": 12,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM TIA ELZA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 49,
+     "candidatos": 29,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM RECANTO FELIZ",
+     "grupamento": "Maternal I",
+     "turno": "Parcial",
+     "capacidade": 74,
+     "candidatos": 30,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "EDI VILA DO VINTÉM",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 86,
+     "candidatos": 52,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "CM VILA UNIÃO DA PAZ",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 4,
+     "candidatos": 4,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM TIA ELZA",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CM TIA ELZA"
+   }
+  },
+  {
+   "id": "aluno_0061651",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM JECIÁ DE FREITAS FERREIRA",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 12,
+     "candidatos": 12,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP ASSOCIAÇÃO CENTRO EDUCACIONAL REBRAL VII",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 36,
+     "candidatos": 36,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP ASSOCIAÇÃO CENTRO EDUCACIONAL REBRAL VII",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP ASSOCIAÇÃO CENTRO EDUCACIONAL REBRAL VII"
+   }
+  },
+  {
+   "id": "aluno_0109755",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Criança aguardou em fila de espera no ano anterior sem ter sido atendida?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    },
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Criança aguardou em fila de espera no ano anterior sem ter sido atendida?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI PROFESSORA EDIR CASEIRO RIBEIRO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 29,
+     "candidatos": 29,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP AÇÃO SOCIAL PADRE ANCHIETA - ASPA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 43,
+     "candidatos": 43,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 3,
+     "unidade": "CP CENTRO SOCIAL DA MULHER UÊGA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 29,
+     "candidatos": 27,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "CP CRECHE BERÇÁRIO MARIA HELENA DA ROCINHA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 0,
+     "candidatos": 0,
+     "nota_de_corte": null,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP AÇÃO SOCIAL PADRE ANCHIETA - ASPA",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "EDI PROFESSORA EDIR CASEIRO RIBEIRO"
+   }
+  },
+  {
+   "id": "aluno_0128127",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM DANIELA PEREZ",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 14,
+     "candidatos": 14,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "EDI LARISSA DOS SANTOS ATANAZIO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 26,
+     "candidatos": 26,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM DJANIRA MARIA RAMOS",
+     "grupamento": "Maternal I",
+     "turno": "Parcial",
+     "capacidade": 42,
+     "candidatos": 42,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "EDI LARISSA DOS SANTOS ATANAZIO",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CM DJANIRA MARIA RAMOS"
+   }
+  },
+  {
+   "id": "aluno_0094210",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O candidato é refugiado?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM VILA PINHEIRO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 7,
+     "candidatos": 7,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "EDI MEDALHISTA OLÍMPICO EDER FRANCIS CARBONERA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 27,
+     "candidatos": 27,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "EDI MEDALHISTA OLÍMPICO LUIZ FELIPE MARQUES FONTELES",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 2,
+     "candidatos": 2,
+     "nota_de_corte": 53,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "EDI MEDALHISTA OLÍMPICO WILLIAM PEIXOTO ARJONA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 28,
+     "candidatos": 28,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "EDI MEDALHISTA OLÍMPICO EVANDRO MOTTA MARCONDES GUERRA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 60,
+     "candidatos": 60,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "EDI MEDALHISTA OLÍMPICO EVANDRO MOTTA MARCONDES GUERRA",
+    "opcao": 5
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "EDI MEDALHISTA OLÍMPICO EVANDRO MOTTA MARCONDES GUERRA"
+   }
+  },
+  {
+   "id": "aluno_0124041",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    },
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE CARDEAL CÂMARA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 49,
+     "candidatos": 49,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "EDI EVARISTO DA VEIGA",
+     "grupamento": "Maternal I",
+     "turno": "Parcial",
+     "capacidade": 53,
+     "candidatos": 53,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM EMÍLIA JOANA DA FONSECA MARQUES",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 30,
+     "candidatos": 30,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "CM IRMÃ DULCE",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 47,
+     "candidatos": 47,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "CP CRECHE VALE DO SOL PRAÇA SECA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 20,
+     "candidatos": 20,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "EDI EVARISTO DA VEIGA",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE CARDEAL CÂMARA"
+   }
+  },
+  {
+   "id": "aluno_0001823",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI MILENA SANTOS NASCIMENTO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 52,
+     "candidatos": 52,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CRECHE AMOR DE MÃE",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 63,
+     "candidatos": 63,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM MARIA VIEIRA BAZANI",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 79,
+     "candidatos": 79,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 4,
+     "unidade": "CP CRECHE CANTINHO FELIZ",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 29,
+     "candidatos": 29,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "CP CRECHE NOVO PALMARES",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 58,
+     "candidatos": 58,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM MARIA VIEIRA BAZANI",
+    "opcao": 3
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE AMOR DE MÃE"
+   }
+  },
+  {
+   "id": "aluno_0143579",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE COMUNITÁRIA CRIANÇAS DE OURO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 17,
+     "candidatos": 17,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CRECHE COMUNITÁRIA ESTRELINHA DO SABER",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 9,
+     "candidatos": 9,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "EDI PROFESSOR ANDRÉ LUIZ GILS",
+     "grupamento": "Bercario",
+     "turno": "Parcial",
+     "capacidade": 33,
+     "candidatos": 33,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 4,
+     "unidade": "EDI ALBERTO FERREIRA PINTO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 29,
+     "candidatos": 29,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "EDI PROFESSOR ANDRÉ LUIZ GILS",
+    "opcao": 3
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "EDI ALBERTO FERREIRA PINTO"
+   }
+  },
+  {
+   "id": "aluno_0007917",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP ASSOCIAÇÃO AMIGOS DA CRIANÇA - CRECHE ROCHA MIRANDA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 35,
+     "candidatos": 35,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP AEMMAC - ROCHA MIRANDA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 37,
+     "candidatos": 37,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "CP ASSOCIAÇÃO EDUCACIONAL E CULTURAL SÃO BERNARDO - CSB",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 57,
+     "candidatos": 57,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP ASSOCIAÇÃO EDUCACIONAL E CULTURAL SÃO BERNARDO - CSB",
+    "opcao": 3
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0068467",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE FRUTOS DO AMANHÃ II",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 14,
+     "candidatos": 14,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM ENGENHO DA RAINHA",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 28,
+     "candidatos": 23,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM ENGENHO DA RAINHA",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE FRUTOS DO AMANHÃ II"
+   }
+  },
+  {
+   "id": "aluno_0142743",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CENTRO INTEGRADO SÃO JOSÉ",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 27,
+     "candidatos": 27,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CAAD UNIVERSO DA CRIANÇA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 125,
+     "candidatos": 125,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP CAAD UNIVERSO DA CRIANÇA",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CENTRO INTEGRADO SÃO JOSÉ"
+   }
+  },
+  {
+   "id": "aluno_0114322",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE MAGIA DA CRIANÇA II",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 10,
+     "candidatos": 10,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CRECHE ESCOLA COMUNITÁRIA MALLETZINHO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 30,
+     "candidatos": 30,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE ESCOLA COMUNITÁRIA MALLETZINHO",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE ESCOLA COMUNITÁRIA MALLETZINHO"
+   }
+  },
+  {
+   "id": "aluno_0115080",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM PADRE VALTER DA COSTA SANTOS",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 27,
+     "candidatos": 27,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "EDI PROFESSORA EUGENIA DE ALMEIDA AZEVEDO",
+     "grupamento": "Maternal I",
+     "turno": "Parcial",
+     "capacidade": 51,
+     "candidatos": 51,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "EDI PROFESSORA EUGENIA DE ALMEIDA AZEVEDO",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "EDI PROFESSORA EUGENIA DE ALMEIDA AZEVEDO"
+   }
+  },
+  {
+   "id": "aluno_0121174",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE COMUNITÁRIA JARDIM FELIZ",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 8,
+     "candidatos": 8,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM RAUL CORTEZ",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 52,
+     "candidatos": 52,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 3,
+     "unidade": "CP CRECHE COMUNITÁRIA RIBEIRO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 25,
+     "candidatos": 25,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "CP INSTITUTO CONSTRUINDO AMANHÃ",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 13,
+     "candidatos": 13,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "EDI HENRIQUE DIAS",
+     "grupamento": "Maternal I",
+     "turno": "Parcial",
+     "capacidade": 28,
+     "candidatos": 21,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM RAUL CORTEZ",
+    "opcao": 2
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "EDI HENRIQUE DIAS"
+   }
+  },
+  {
+   "id": "aluno_0013629",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM RACHEL LEITE DIAS",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 48,
+     "candidatos": 48,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CM RACHEL LEITE DIAS"
+   }
+  },
+  {
+   "id": "aluno_0094810",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE SÃO COSME E SÃO DAMIÃO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 30,
+     "candidatos": 30,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE SÃO COSME E SÃO DAMIÃO"
+   }
+  },
+  {
+   "id": "aluno_0072916",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE E ESCOLA COMUNITARIA GENTE BAIXINHA - UNIDADE COSMOS",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 2,
+     "candidatos": 2,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CRECHE COMUNITÁRIA LEÃOZINHO FELIZ",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 4,
+     "candidatos": 4,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0147342",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP NINHO CARIOCA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 20,
+     "candidatos": 20,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0136357",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI PROFESSOR MARCOS FLAMÍNIO PORTUGAL PINTO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 29,
+     "candidatos": 29,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0117725",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    },
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM YEDDA MARQUES LAMOUNIER DE ANDRADE MACIEL",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 6,
+     "candidatos": 6,
+     "nota_de_corte": 61,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CRECHE ABRINDO PORTAS",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 65,
+     "candidatos": 65,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM HERBERT DE SOUZA - BETINHO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 45,
+     "candidatos": 45,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "CP CRECHE ESCOLA COMUNITÁRIA TIO PATINHAS",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 21,
+     "candidatos": 21,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "CM EDNA LOTTE",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 8,
+     "candidatos": 8,
+     "nota_de_corte": 64,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE ABRINDO PORTAS"
+   }
+  },
+  {
+   "id": "aluno_0010529",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE COMUNITÁRIA CRIANÇAS DE OURO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 17,
+     "candidatos": 17,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM EMILIO IBRAHIM LÁZARO JUBRAM DIB",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 8,
+     "candidatos": 8,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE COMUNITÁRIA CRIANÇAS DE OURO"
+   }
+  },
+  {
+   "id": "aluno_0062490",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "A criança e/ou alguém do núcleo familiar apresentam doenças crônicas graves?",
+     "pontos": 3
+    },
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CENTRO EDUCACIONAL ESTRELA DO AMANHÃ",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 4,
+     "candidatos": 4,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0059133",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE NOSSO LAR II",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 26,
+     "candidatos": 26,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "EDI MEDALHISTA PARALÍMPICO DANIEL MARTINS",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 5,
+     "candidatos": 5,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE NOSSO LAR II"
+   }
+  },
+  {
+   "id": "aluno_0137719",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM RIO NOVO - RIO DAS FLORES",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 50,
+     "candidatos": 50,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0139864",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "Existe algum membro do núcleo familiar que é presidiário ou ex-presidiário nos últimos 5 anos?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Existe algum membro do núcleo familiar que faz uso abusivo de drogas e/ou alcoól?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI MEDALHISTA OLÍMPICO LUIZ FELIPE MARQUES FONTELES",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 27,
+     "candidatos": 27,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "EDI MEDALHISTA OLÍMPICO EVANDRO MOTTA MARCONDES GUERRA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 25,
+     "candidatos": 25,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "EDI PESCADOR ALBANO ROSA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 30,
+     "candidatos": 30,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "EDI PROFESSORA SOLANGE CONCEIÇÃO TRICARICO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 28,
+     "candidatos": 28,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "EDI MEDALHISTA OLÍMPICO WILLIAM PEIXOTO ARJONA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 28,
+     "candidatos": 28,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "EDI MEDALHISTA OLÍMPICO EVANDRO MOTTA MARCONDES GUERRA"
+   }
+  },
+  {
+   "id": "aluno_0013668",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP OBRA DO BERÇO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 19,
+     "candidatos": 19,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CRECHE BEZERRA DE MENEZES - BOTAFOGO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 12,
+     "candidatos": 12,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM IRMÃS BAPTISTA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 48,
+     "candidatos": 48,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0102719",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "Criança aguardou em fila de espera no ano anterior sem ter sido atendida?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM CRIANÇA DO FUTURO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 2,
+     "candidatos": 2,
+     "nota_de_corte": 59,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "EDI MEDALHISTA OLÍMPICA ÁGATHA BEDNARCZUK RIPPEL",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 5,
+     "candidatos": 5,
+     "nota_de_corte": 2,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM AUGUSTO DE CARVALHO TORRES FILHO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 4,
+     "candidatos": 4,
+     "nota_de_corte": 9,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "EDI RODRIGO LOPES (TIKINHO)",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 31,
+     "candidatos": 31,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "EDI PROFESSORA TEREZINHA SARAIVA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 23,
+     "candidatos": 23,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "EDI PROFESSORA TEREZINHA SARAIVA"
+   }
+  },
+  {
+   "id": "aluno_0003698",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI MEDALHISTA OLÍMPICA POLIANA OKIMOTO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 31,
+     "candidatos": 31,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "EDI MEDALHISTA OLÍMPICA POLIANA OKIMOTO"
+   }
+  },
+  {
+   "id": "aluno_0081737",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM MENINO MALUQUINHO",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 27,
+     "candidatos": 27,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM VILA PINHEIRO",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 1,
+     "candidatos": 1,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM TIO MÁRIO",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 1,
+     "candidatos": 1,
+     "nota_de_corte": 2,
+     "conseguiu": false
+    },
+    {
+     "posicao": 4,
+     "unidade": "EDI MEDALHISTA OLÍMPICO EVANDRO MOTTA MARCONDES GUERRA",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 5,
+     "candidatos": 5,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 5,
+     "unidade": "EDI MEDALHISTA OLÍMPICO LUIZ FELIPE MARQUES FONTELES",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 28,
+     "candidatos": 28,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "EDI MEDALHISTA OLÍMPICO LUIZ FELIPE MARQUES FONTELES"
+   }
+  },
+  {
+   "id": "aluno_0120845",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI KARINE LORRAINE CHAGAS DE OLIVEIRA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 21,
+     "candidatos": 21,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0002509",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE VALE DO SOL",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 54,
+     "candidatos": 54,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0100505",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "A criança e/ou alguém do núcleo familiar apresentam doenças crônicas graves?",
+     "pontos": 3
+    },
+    {
+     "criterio": "Candidato tem pais ou responsáveis deficientes ?",
+     "pontos": 3
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CENTRO EDUCACIONAL ESTRELA DO AMANHÃ",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 16,
+     "candidatos": 16,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0052604",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Existe algum membro do núcleo familiar que faz uso abusivo de drogas e/ou alcoól?",
+     "pontos": 2
+    },
+    {
+     "criterio": "A criança e/ou familiar do seu convívio diário é vitima de violência doméstica?",
+     "pontos": 4
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP ABRIGO TERESA DE JESUS",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 1,
+     "candidatos": 1,
+     "nota_de_corte": 51,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP EDUCANDÁRIO CASA DE JACIRA",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 23,
+     "candidatos": 23,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP EDUCANDÁRIO CASA DE JACIRA"
+   }
+  },
+  {
+   "id": "aluno_0116096",
+   "pontos": 0,
+   "desempates": 0,
+   "criterios_validados": [],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI PROFESSORA TANIA DA ROCHA CORREA",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 7,
+     "candidatos": 7,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 2,
+     "unidade": "CP CRECHE VALE DO SOL",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 55,
+     "candidatos": 55,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "CP SOLZINHO",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 18,
+     "candidatos": 18,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": false,
+    "unidade": null,
+    "opcao": null
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE VALE DO SOL"
+   }
+  },
+  {
+   "id": "aluno_0006964",
+   "pontos": 4,
+   "desempates": 2,
+   "criterios_validados": [
+    {
+     "criterio": "O Candidato possui pais ou responsáveis com idade menor que 18 anos?",
+     "pontos": 0
+    },
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    },
+    {
+     "criterio": "O Candidato possui pais ou responsáveis com idade menor que 18 anos?",
+     "pontos": 0
+    },
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    }
+   ],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM VILA KENNEDY",
+     "grupamento": "Bercario",
+     "turno": "Parcial",
+     "capacidade": 64,
+     "candidatos": 64,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM MULHERES DO QUAFÁ",
+     "grupamento": "Bercario",
+     "turno": "Parcial",
+     "capacidade": 75,
+     "candidatos": 75,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "CM VILA PROGRESSO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 56,
+     "candidatos": 56,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM VILA KENNEDY",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0120202",
+   "pontos": 57,
+   "desempates": 0,
+   "criterios_validados": [
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE PLANTANDO O AMANHÃ",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 52,
+     "candidatos": 52,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE PLANTANDO O AMANHÃ",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0083950",
+   "pontos": 53,
+   "desempates": 0,
+   "criterios_validados": [
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE CANTINHO FELIZ II",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 26,
+     "candidatos": 26,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE CANTINHO FELIZ II",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE CANTINHO FELIZ II"
+   }
+  },
+  {
+   "id": "aluno_0138333",
+   "pontos": 5,
+   "desempates": 0,
+   "criterios_validados": [
+    {
+     "criterio": "Candidato tem pais ou responsáveis deficientes ?",
+     "pontos": 3
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    }
+   ],
+   "criterios_so_declarados": [
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CENTRO DE ATIVIDADES EDUCACIONAIS E CULTURAIS ARCA DE NOÉ - CAECAN",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 45,
+     "candidatos": 45,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP CENTRO DE ATIVIDADES EDUCACIONAIS E CULTURAIS ARCA DE NOÉ - CAECAN",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CENTRO DE ATIVIDADES EDUCACIONAIS E CULTURAIS ARCA DE NOÉ - CAECAN"
+   }
+  },
+  {
+   "id": "aluno_0143953",
+   "pontos": 58,
+   "desempates": 0,
+   "criterios_validados": [
+    {
+     "criterio": "A criança e/ou alguém do núcleo familiar apresentam doenças crônicas graves?",
+     "pontos": 3
+    },
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP OBRA DO BERÇO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 19,
+     "candidatos": 19,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP OBRA DO BERÇO",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0124726",
+   "pontos": 4,
+   "desempates": 0,
+   "criterios_validados": [
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    }
+   ],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP INSTITUTO CRESCER & APRENDER",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 55,
+     "candidatos": 55,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP INSTITUTO CRESCER & APRENDER",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP INSTITUTO CRESCER & APRENDER"
+   }
+  },
+  {
+   "id": "aluno_0076048",
+   "pontos": 53,
+   "desempates": 0,
+   "criterios_validados": [
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP AEMMAC - PAVUNA",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 43,
+     "candidatos": 43,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 2,
+     "unidade": "CM LUÍS CARLOS PRESTES",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 15,
+     "candidatos": 15,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    },
+    {
+     "posicao": 3,
+     "unidade": "EDI MARIA EUGENIA CANELHAS",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 20,
+     "candidatos": 20,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP AEMMAC - PAVUNA",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP AEMMAC - PAVUNA"
+   }
+  },
+  {
+   "id": "aluno_0089677",
+   "pontos": 6,
+   "desempates": 0,
+   "criterios_validados": [
+    {
+     "criterio": "Criança aguardou em fila de espera no ano anterior sem ter sido atendida?",
+     "pontos": 2
+    },
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    }
+   ],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CRECHE PLANTANDO O AMANHÃ",
+     "grupamento": "Maternal Ii",
+     "turno": "Integral",
+     "capacidade": 23,
+     "candidatos": 23,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE PLANTANDO O AMANHÃ",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CRECHE PLANTANDO O AMANHÃ"
+   }
+  },
+  {
+   "id": "aluno_0136448",
+   "pontos": 3,
+   "desempates": 0,
+   "criterios_validados": [
+    {
+     "criterio": "A criança e/ou alguém do núcleo familiar apresentam doenças crônicas graves?",
+     "pontos": 3
+    }
+   ],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "EDI PROFESSORA REGINA CELI RABELO DE ALMEIDA",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 28,
+     "candidatos": 28,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 2,
+     "unidade": "EDI BETH CARVALHO",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 78,
+     "candidatos": 78,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "EDI PROFESSORA REGINA CELI RABELO DE ALMEIDA",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": false,
+    "unidade": null
+   }
+  },
+  {
+   "id": "aluno_0137930",
+   "pontos": 53,
+   "desempates": 1,
+   "criterios_validados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM PADRE VALTER DA COSTA SANTOS",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 32,
+     "candidatos": 32,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    },
+    {
+     "posicao": 2,
+     "unidade": "EDI PROFESSORA EUGENIA DE ALMEIDA AZEVEDO",
+     "grupamento": "Bercario",
+     "turno": "Parcial",
+     "capacidade": 67,
+     "candidatos": 67,
+     "nota_de_corte": 0,
+     "conseguiu": false
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM PADRE VALTER DA COSTA SANTOS",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CM PADRE VALTER DA COSTA SANTOS"
+   }
+  },
+  {
+   "id": "aluno_0118803",
+   "pontos": 53,
+   "desempates": 1,
+   "criterios_validados": [
+    {
+     "criterio": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+     "pontos": 0
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "criterios_so_declarados": [],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CP CASA MATERNAL NOSSA SENHORA DE NAZARÉ",
+     "grupamento": "Maternal I",
+     "turno": "Integral",
+     "capacidade": 73,
+     "candidatos": 73,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CP CASA MATERNAL NOSSA SENHORA DE NAZARÉ",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CP CASA MATERNAL NOSSA SENHORA DE NAZARÉ"
+   }
+  },
+  {
+   "id": "aluno_0009105",
+   "pontos": 60,
+   "desempates": 0,
+   "criterios_validados": [
+    {
+     "criterio": "A criança e/ou alguém do núcleo familiar apresentam doenças crônicas graves?",
+     "pontos": 3
+    },
+    {
+     "criterio": "A criança pertence a família monoparental?",
+     "pontos": 4
+    },
+    {
+     "criterio": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+     "pontos": 51
+    }
+   ],
+   "criterios_so_declarados": [
+    {
+     "criterio": "Existe algum membro do núcleo familiar que é presidiário ou ex-presidiário nos últimos 5 anos?",
+     "pontos": 2
+    },
+    {
+     "criterio": "Existe algum membro do núcleo familiar que faz uso abusivo de drogas e/ou alcoól?",
+     "pontos": 2
+    },
+    {
+     "criterio": "A criança e/ou familiar do seu convívio diário é vitima de violência doméstica?",
+     "pontos": 4
+    }
+   ],
+   "opcoes": [
+    {
+     "posicao": 1,
+     "unidade": "CM ALDEIA DOS CURUMINS",
+     "grupamento": "Bercario",
+     "turno": "Integral",
+     "capacidade": 61,
+     "candidatos": 61,
+     "nota_de_corte": 0,
+     "conseguiu": true
+    }
+   ],
+   "resultado_fila_unica": {
+    "conseguiu": true,
+    "unidade": "CM ALDEIA DOS CURUMINS",
+    "opcao": 1
+   },
+   "resultado_processo_atual": {
+    "conseguiu": true,
+    "unidade": "CM ALDEIA DOS CURUMINS"
+   }
+  }
+ ]
+}

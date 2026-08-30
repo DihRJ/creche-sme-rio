@@ -81,8 +81,8 @@ export function Simulador() {
               <YAxis tick={axis} tickLine={false} axisLine={false} width={48}
                      tickFormatter={(v) => (v >= 1000 ? `${v / 1000}k` : v)} />
               <Tooltip content={<Tip />} cursor={{ fill: "var(--surface-2)" }} />
-              <Bar dataKey="atual" name="Processo atual" fill="var(--text-3)" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="cenario" name={cur.nome} fill="var(--ganho)" radius={[4, 4, 0, 0]}>
+              <Bar dataKey="atual" isAnimationActive={false} name="Processo atual" fill="var(--text-3)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="cenario" isAnimationActive={false} name={cur.nome} fill="var(--ganho)" radius={[4, 4, 0, 0]}>
                 <LabelList dataKey="cenario" position="top"
                            formatter={(v) => (Number(v) > 3000 ? fmt(Number(v)) : "")}
                            style={{ fontSize: 11, fill: "var(--text-2)" }} />
