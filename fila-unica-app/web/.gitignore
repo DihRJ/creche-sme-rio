@@ -23,5 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# capturas do e2e: geradas, nao versionadas
+# capturas e videos do e2e: gerados, nao versionados
 e2e/capturas
+e2e/videos
