@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# capturas do e2e: geradas, nao versionadas
+e2e/capturas
