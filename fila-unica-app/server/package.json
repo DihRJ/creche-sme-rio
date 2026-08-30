@@ -11,7 +11,8 @@
     "start": "tsx --env-file-if-exists=.env src/index.ts",
     "check": "npm run sync && tsc --noEmit",
     "verifica": "node --env-file=.env verifica-conexao.mjs",
-    "seed": "tsx --env-file-if-exists=.env src/seed.ts"
+    "seed": "tsx --env-file-if-exists=.env src/seed.ts",
+    "limpar": "tsx --env-file-if-exists=.env src/limpar.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",

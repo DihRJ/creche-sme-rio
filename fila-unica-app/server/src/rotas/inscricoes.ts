@@ -5,7 +5,8 @@ import { auditar } from "../auditoria.ts";
 import { sql, transacao } from "../db.ts";
 import { ErroHttp, ok, rota } from "../http.ts";
 import { exigirDono, montarInscricao } from "../inscricao.ts";
-import { GRUPAMENTOS, TURNOS, type Grupamento, type Turno } from "../contracts.gen.ts";
+import { recalcularSituacoes } from "../criterios.ts";
+import { GRUPAMENTOS, MAX_OPCOES, TURNOS, type Grupamento, type Turno } from "../contracts.gen.ts";
 
 export const inscricoes = Router();
 
@@ -78,6 +79,113 @@ inscricoes.get(
     // Express 5 tipa req.params como string | string[].
     const id = String(req.params.id);
     await exigirDono(id, autor(req));
+    return ok(res, await montarInscricao(id));
+  }),
+);
+
+/** Rascunho pode ser editado; enviada, não. */
+async function exigirRascunho(inscricaoId: string): Promise<{ grupamento: string; turno: string }> {
+  const [i] = await sql<{ situacao: string; grupamento: string; turno: string }>(
+    `select situacao, grupamento, turno from inscricao where id = $1`,
+    [inscricaoId],
+  );
+  if (!i) throw new ErroHttp("NAO_ENCONTRADO", "Inscrição não encontrada.");
+  if (i.situacao !== "rascunho")
+    throw new ErroHttp("INSCRICAO_JA_ENVIADA", "Esta inscrição já foi enviada e não pode mais ser alterada.");
+  return { grupamento: i.grupamento, turno: i.turno };
+}
+
+// ── E9 ────────────────────────────────────────────────────────────────
+// Substitui as opções INTEIRAS. A ordem do array é a ordem de preferência, e ela
+// é vinculante (R1): o sistema aloca na melhor opção possível e libera as demais
+// na mesma rodada. É o que acaba com o bloqueio de 5 vagas por CPF (G1).
+inscricoes.put(
+  "/inscricoes/:id/opcoes",
+  exigeAuth,
+  rota(async (req, res) => {
+    const id = String(req.params.id);
+    await exigirDono(id, autor(req));
+    const { grupamento, turno } = await exigirRascunho(id);
+
+    const ofertaIds: unknown = req.body?.oferta_ids;
+    if (!Array.isArray(ofertaIds))
+      throw new ErroHttp("VALIDACAO", "Envie a lista `oferta_ids`.", "oferta_ids");
+    if (ofertaIds.length > MAX_OPCOES)
+      throw new ErroHttp("LIMITE_OPCOES", `Você pode escolher no máximo ${MAX_OPCOES} creches.`, "oferta_ids");
+
+    const ids = ofertaIds.map((v) => String(v));
+    if (new Set(ids).size !== ids.length)
+      throw new ErroHttp("VALIDACAO", "Você escolheu a mesma creche duas vezes.", "oferta_ids");
+
+    if (ids.length > 0) {
+      // As ofertas precisam existir E bater com o grupamento/turno da inscrição:
+      // a criança concorre a um grupamento só.
+      const achadas = await sql<{ id: string; grupamento: string; turno: string }>(
+        `select id, grupamento, turno from oferta where id = any($1::uuid[])`,
+        [ids],
+      );
+      if (achadas.length !== ids.length)
+        throw new ErroHttp("NAO_ENCONTRADO", "Alguma das creches escolhidas não existe mais.", "oferta_ids");
+      const divergente = achadas.find((o) => o.grupamento !== grupamento || o.turno !== turno);
+      if (divergente)
+        throw new ErroHttp(
+          "VALIDACAO",
+          `Todas as opções precisam ser de ${grupamento} em turno ${turno}.`,
+          "oferta_ids",
+        );
+    }
+
+    await transacao(async (q) => {
+      await q(`delete from opcao where inscricao_id = $1`, [id]);
+      for (const [i, ofertaId] of ids.entries()) {
+        await q(`insert into opcao (inscricao_id, ordem, oferta_id) values ($1,$2,$3)`, [id, i + 1, ofertaId]);
+      }
+      await auditar("inscricao", id, "opcoes_alteradas", autor(req), null, { oferta_ids: ids }, q);
+    });
+
+    return ok(res, await montarInscricao(id));
+  }),
+);
+
+// ── E10 ───────────────────────────────────────────────────────────────
+// Substitui as declarações INTEIRAS e dispara o cruzamento automático (RF2.2).
+// Critério confirmado por base dispensa upload; o resto precisa de documento (RF2.4).
+inscricoes.put(
+  "/inscricoes/:id/criterios",
+  exigeAuth,
+  rota(async (req, res) => {
+    const id = String(req.params.id);
+    await exigirDono(id, autor(req));
+    await exigirRascunho(id);
+
+    const declarados: unknown = req.body?.declarados;
+    if (!Array.isArray(declarados))
+      throw new ErroHttp("VALIDACAO", "Envie a lista `declarados`.", "declarados");
+    const marcados = new Set(declarados.map((v) => String(v)));
+
+    const criterios = await sql<{ id: string }>(
+      `select c.id from criterio c join inscricao i on i.processo_ano = c.processo_ano where i.id = $1`,
+      [id],
+    );
+    const validos = new Set(criterios.map((c) => c.id));
+    const invalido = [...marcados].find((c) => !validos.has(c));
+    if (invalido) throw new ErroHttp("NAO_ENCONTRADO", "Critério inexistente na régua deste processo.", "declarados");
+
+    await transacao(async (q) => {
+      for (const c of criterios) {
+        // Não apagamos a linha de quem desmarcou: o documento já anexado fica
+        // preservado, e remarcar o critério não faz a família fotografar de novo.
+        await q(
+          `insert into resposta_criterio (inscricao_id, criterio_id, declarado, situacao)
+           values ($1,$2,$3,'nao_declarado')
+           on conflict (inscricao_id, criterio_id) do update set declarado = excluded.declarado`,
+          [id, c.id, marcados.has(c.id)],
+        );
+      }
+      await recalcularSituacoes(id, q);
+      await auditar("inscricao", id, "criterios_declarados", autor(req), null, { declarados: [...marcados] }, q);
+    });
+
     return ok(res, await montarInscricao(id));
   }),
 );
