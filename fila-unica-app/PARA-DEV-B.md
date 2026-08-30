@@ -1,5 +1,20 @@
 # Para o Dev B · um bug e uma tela que falta
 
+> ✅ **RESOLVIDO** no commit `683af99`, já na `dev` e no ar. O `/me` passou a ser
+> consumido inteiro, o destino pós-login segue as quatro regras desta página e a tela
+> `/inscricoes` existe. A resposta item por item, com o que ficou de fora e o que o Dev B
+> devolve ao time, está em [`PARA-O-TIME.md`](PARA-O-TIME.md).
+>
+> Duas coisas para vocês: a **concessão de mudar o texto do servidor pode ser revertida**
+> (a asserção em prosa já não existe desde `27438e1`), e há um **bug silencioso em
+> `limpar.ts`, `seed.ts` e `seed-demo.ts`** que atinge quem trabalha em Windows — está na
+> seção 3 do `PARA-O-TIME.md`.
+>
+> O texto original fica abaixo, sem alteração, porque o diagnóstico dele é o registro de
+> como o bug foi encontrado.
+
+---
+
 Escrito pela dupla que tocou o backend (Dev A), depois de testar o app publicado.
 Leia com o agente na sua máquina — ele tem contexto do repositório em [`AGENTS.md`](AGENTS.md).
 

@@ -169,10 +169,10 @@ export default function MinhaInscricao() {
         )}
       </div>
 
-      {/* ── número de sorteio ── */}
+      {/* ── número de inscrição ── */}
       {inscricao.numero_sorteio && (
         <div className="fu-cartao fu-painel mt-4">
-          <p className="fu-painel__rotulo">Número de sorteio</p>
+          <p className="fu-painel__rotulo">Número de inscrição</p>
           <p className="fu-sorteio">{inscricao.numero_sorteio}</p>
           <p className="mt-3 text-[13px] leading-relaxed" style={{ color: "var(--text-2)" }}>
             Este número desempata quando duas crianças terminam com a mesma pontuação. Ele é
