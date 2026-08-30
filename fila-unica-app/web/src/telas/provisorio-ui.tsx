@@ -8,6 +8,7 @@
  *
  * Tudo aqui e mobile primeiro: desenhado em 360px (RNF1) e com alvo de toque de 44px.
  */
+import { useId } from "react";
 import type { InputHTMLAttributes, ReactNode, SelectHTMLAttributes } from "react";
 
 export function Botao({
@@ -41,20 +42,45 @@ export function Botao({
   );
 }
 
+/**
+ * Ajuda e erro ficam FORA do <label> e entram por aria-describedby.
+ *
+ * Nao e purismo: enquanto estavam dentro do label, o nome acessivel do campo
+ * passava a ser o rotulo mais o paragrafo de ajuda inteiro. O leitor de tela
+ * anuncia "Grupamento preencha a data de nascimento e sugerimos o grupamento"
+ * como se fosse o nome do campo, e a passada automatizada em 360px flagrou isso
+ * ao encontrar dois elementos com o mesmo nome acessivel.
+ */
+function Descricao({ id, texto, tom }: { id: string; texto: string; tom?: "erro" }) {
+  return (
+    <span
+      id={id}
+      className={`block text-[12px] ${tom === "erro" ? "mt-1" : "mt-0.5"}`}
+      style={{ color: tom === "erro" ? "var(--perda)" : "var(--text-3)" }}
+    >
+      {texto}
+    </span>
+  );
+}
+
 export function Campo({
   rotulo, ajuda, erro, ...resto
 }: { rotulo: string; ajuda?: string; erro?: string } & InputHTMLAttributes<HTMLInputElement>) {
+  const base = useId();
+  const idAjuda = ajuda ? `${base}-ajuda` : undefined;
+  const idErro = erro ? `${base}-erro` : undefined;
+  const descrito = [idAjuda, idErro].filter(Boolean).join(" ") || undefined;
   return (
-    <label className="block">
-      <span className="text-[13px] font-semibold">{rotulo}</span>
-      {ajuda && (
-        <span className="mt-0.5 block text-[12px]" style={{ color: "var(--text-3)" }}>
-          {ajuda}
-        </span>
-      )}
+    <div className="block">
+      <label className="block text-[13px] font-semibold" htmlFor={`${base}-campo`}>
+        {rotulo}
+      </label>
+      {ajuda && idAjuda && <Descricao id={idAjuda} texto={ajuda} />}
       <input
         {...resto}
+        id={`${base}-campo`}
         aria-invalid={erro ? true : undefined}
+        aria-describedby={descrito}
         className="mt-1.5 min-h-[44px] w-full rounded-xl px-3 text-[16px] outline-none"
         style={{
           background: "var(--surface-1)",
@@ -62,34 +88,32 @@ export function Campo({
           color: "var(--text-1)",
         }}
       />
-      {erro && (
-        <span className="mt-1 block text-[12px]" style={{ color: "var(--perda)" }}>
-          {erro}
-        </span>
-      )}
-    </label>
+      {erro && idErro && <Descricao id={idErro} texto={erro} tom="erro" />}
+    </div>
   );
 }
 
 export function Selecao({
   rotulo, ajuda, children, ...resto
 }: { rotulo: string; ajuda?: string } & SelectHTMLAttributes<HTMLSelectElement>) {
+  const base = useId();
+  const idAjuda = ajuda ? `${base}-ajuda` : undefined;
   return (
-    <label className="block">
-      <span className="text-[13px] font-semibold">{rotulo}</span>
-      {ajuda && (
-        <span className="mt-0.5 block text-[12px]" style={{ color: "var(--text-3)" }}>
-          {ajuda}
-        </span>
-      )}
+    <div className="block">
+      <label className="block text-[13px] font-semibold" htmlFor={`${base}-campo`}>
+        {rotulo}
+      </label>
+      {ajuda && idAjuda && <Descricao id={idAjuda} texto={ajuda} />}
       <select
         {...resto}
+        id={`${base}-campo`}
+        aria-describedby={idAjuda}
         className="mt-1.5 min-h-[44px] w-full rounded-xl px-3 text-[16px] outline-none"
         style={{ background: "var(--surface-1)", border: "1px solid var(--border)", color: "var(--text-1)" }}
       >
         {children}
       </select>
-    </label>
+    </div>
   );
 }
 
@@ -151,7 +175,7 @@ export function Passos({ etapa }: { etapa: number }) {
               }}
               aria-current={atual ? "step" : undefined}
             >
-              {feita ? "✓" : n}. {nome}
+              {feita ? "✓" : `${n}.`} {nome}
             </span>
             {n < ETAPAS.length && <span style={{ color: "var(--text-3)" }}>›</span>}
           </li>
