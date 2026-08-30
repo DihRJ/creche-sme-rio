@@ -4,6 +4,7 @@
 Claude Impact Lab Rio, 2ª edição · 30 de agosto de 2026.
 
 🔗 **Aplicação publicada: https://fila-unica.pages.dev**
+📄 **[PRD do sistema completo](PRD.md)** · 🎤 **[Roteiro do pitch](PITCH.md)** · ✉️ **[Texto da submissão](EMAIL.md)**
 
 ---
 
