@@ -1,0 +1,84 @@
+# Blueprint do Render para o app da família (fila-unica-app).
+#
+# Este arquivo NÃO faz deploy sozinho: ele só descreve os dois serviços. Para usar,
+# crie um Blueprint no Render apontando para este repositório e a branch `dev`.
+# Se os serviços já existirem criados à mão, ou o Blueprint assume os dois, ou este
+# arquivo fica aqui só como documentação executável da configuração.
+#
+# Por que existe: o `fila-unica-app/README.md` lista três armadilhas de deploy, cada
+# uma de "5 minutos se antecipada e 40 se descoberta às 3h50". Duas delas são
+# configuração e estão resolvidas abaixo, em arquivo, em vez de depender de alguém
+# lembrar de clicar certo na interface:
+#
+#   1. CORS      -> WEB_ORIGIN declarado como variável do serviço da API
+#   2. Rewrite   -> a regra /* -> /index.html está em `routes`, embaixo
+#   3. Hibernação-> NÃO tem solução em arquivo. O plano free dorme após ~15 min e
+#                   leva ~50s para acordar. Acorde a API 2 minutos antes do pitch,
+#                   ou aponte um ping externo para /api/saude.
+#
+# O painel analítico (`app/`, Next.js) não está aqui: ele vai para o Cloudflare
+# Pages e já está publicado em https://fila-unica.pages.dev
+
+services:
+  # ── API ──────────────────────────────────────────────────────────────
+  - name: fila-unica-api
+    type: web
+    runtime: node
+    plan: free
+    # ohio = us-east-2, a mesma região do projeto Neon. Região diferente coloca
+    # a latência do banco no caminho de toda requisição.
+    region: ohio
+    rootDir: fila-unica-app/server
+    buildCommand: npm ci
+    startCommand: npm start
+    # O boot aplica o schema e semeia antes de responder; o health check no /saude
+    # é o que faz o Render só marcar o serviço como vivo quando o banco respondeu.
+    healthCheckPath: /api/saude
+    envVars:
+      # Do Neon. Pegue com `neon env pull --file .env --service postgres`.
+      # POOLED, para o runtime da API.
+      - key: DATABASE_URL
+        sync: false
+      # DIRETA, para DDL, migração e seed. DDL por conexão pooled falha de forma
+      # intermitente, porque o pooler multiplexa sessões.
+      - key: DATABASE_URL_UNPOOLED
+        sync: false
+      # Copie o valor do server/.env local, que já tem um gerado.
+      - key: JWT_SEGREDO
+        sync: false
+      # Esta NÃO é segredo, e é de propósito: o AD-6 do PLANO.md exige que a semente
+      # do sorteio seja publicada antes do fim das inscrições, para que qualquer
+      # pessoa possa verificar que o número de desempate não foi escolhido depois
+      # de conhecer o resultado.
+      - key: SEMENTE_PROCESSO
+        value: fila-unica-2026
+      # O domínio EXATO do Static Site, com https:// e sem barra no fim.
+      # Não dá para derivar com `fromService`: a propriedade `host` devolve o
+      # hostname da rede privada do Render, não a URL pública.
+      - key: WEB_ORIGIN
+        sync: false
+      # PORT não entra aqui: o Render injeta, e o index.ts já lê process.env.PORT.
+
+  # ── Web ──────────────────────────────────────────────────────────────
+  - name: fila-unica-web
+    type: web
+    runtime: static
+    rootDir: fila-unica-app/web
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    # Armadilha 2. Sem esta regra, recarregar em /inscricao/xyz/unidades devolve
+    # 404 e o jurado vê erro: o roteador é client-side, então toda rota tem que
+    # cair no index.html e ser resolvida no navegador.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      # A URL pública da API, COM /api no fim. Mesmo motivo do WEB_ORIGIN: não dá
+      # para derivar por `fromService`.
+      - key: VITE_API_URL
+        sync: false
+      # Sem isto o cliente cai no mock, e a demo roda sem tocar no banco. É o
+      # default seguro no desenvolvimento e o errado em produção.
+      - key: VITE_USAR_MOCK
+        value: "false"

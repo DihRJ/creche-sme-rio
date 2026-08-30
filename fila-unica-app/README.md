@@ -118,6 +118,11 @@ Se aos 20 minutos o deploy não estiver verde: **as três pessoas param e resolv
 
 ## Deploy (Render)
 
+> Os dois serviços estão descritos em [`../render.yaml`](../render.yaml), com a regra de rewrite
+> e as variáveis já declaradas. Criar um Blueprint no Render apontando para este repositório
+> resolve as armadilhas 1 e 2 sem depender de clicar certo na interface. O arquivo não faz deploy
+> sozinho, e se os serviços já existirem criados à mão ele vale como documentação da configuração.
+
 | Serviço | Tipo | Configuração |
 | --- | --- | --- |
 | `fila-unica-api` | Web Service · Node | Root dir `fila-unica-app/server` · Build `npm ci` · Start `npm start` |
