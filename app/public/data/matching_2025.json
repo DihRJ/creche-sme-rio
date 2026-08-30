@@ -1,0 +1,34 @@
+{
+  "ano": 2025,
+  "teto_turma": 25,
+  "criancas_inscritas": 62899,
+  "vagas_planejadas": 56923,
+  "vagas_ociosas_fisicas": 8239,
+  "atual": {
+    "alocadas": 48680,
+    "por_opcao": {
+      "1": 35139,
+      "2": 7553,
+      "3": 3505,
+      "4": 1589,
+      "5": 897
+    },
+    "ociosas": 8243
+  },
+  "fila_unica": {
+    "alocadas": 49982,
+    "por_opcao": {
+      "1": 40844,
+      "2": 6425,
+      "3": 1854,
+      "4": 615,
+      "5": 241,
+      "6": 3
+    },
+    "ociosas": 6941,
+    "realocadas_no_bairro": 3175,
+    "alocadas_com_fallback": 53157
+  },
+  "ganho_1a_opcao": 5705,
+  "ganho_criancas": 4477
+}

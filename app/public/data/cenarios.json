@@ -1,0 +1,76 @@
+{
+  "ano": 2025,
+  "teto_turma": 25,
+  "vagas": 56923,
+  "criancas_inscritas": 62899,
+  "vulneraveis_inscritas": 36529,
+  "cenarios": {
+    "atual": {
+      "nome": "Processo atual",
+      "alocadas": 48680,
+      "por_opcao": {
+        "1": 35139,
+        "2": 7553,
+        "3": 3505,
+        "4": 1589,
+        "5": 897
+      },
+      "ociosas": 8243,
+      "realocadas_no_bairro": 0,
+      "vulneraveis_atendidas": 28426,
+      "descricao": "O que a Inscrição Creche de 2025 efetivamente entregou: classificação por opção e convocação em cascata."
+    },
+    "fila_unica": {
+      "nome": "Fila Única",
+      "alocadas": 50047,
+      "ociosas": 6876,
+      "por_opcao": {
+        "1": 40838,
+        "2": 6451,
+        "3": 1881,
+        "4": 623,
+        "5": 246,
+        "6": 7,
+        "7": 1
+      },
+      "realocadas_no_bairro": 0,
+      "vulneraveis_atendidas": 29900,
+      "descricao": "Aceitação diferida: a criança é classificada uma vez e todas as opções resolvem na mesma rodada. Mesma régua, mesmas vagas."
+    },
+    "com_bairro": {
+      "nome": "Fila Única + oferta no bairro",
+      "alocadas": 53175,
+      "ociosas": 3748,
+      "por_opcao": {
+        "1": 40838,
+        "2": 6451,
+        "3": 1881,
+        "4": 623,
+        "5": 246,
+        "6": 7,
+        "7": 1,
+        "99": 3128
+      },
+      "realocadas_no_bairro": 3128,
+      "vulneraveis_atendidas": 31625,
+      "descricao": "Quem não entrou em nenhuma das cinco opções recebe automaticamente a vaga ociosa mais próxima no próprio bairro."
+    },
+    "regua_viva": {
+      "nome": "Fila Única + régua valendo",
+      "alocadas": 53275,
+      "ociosas": 3648,
+      "por_opcao": {
+        "1": 41284,
+        "2": 6013,
+        "3": 1915,
+        "4": 698,
+        "5": 342,
+        "6": 3,
+        "99": 3020
+      },
+      "realocadas_no_bairro": 3020,
+      "vulneraveis_atendidas": 34633,
+      "descricao": "O mesmo, com a régua de vulnerabilidade efetivamente aplicada — como seria se a validação do CadÚnico funcionasse em vez de 6,8%."
+    }
+  }
+}

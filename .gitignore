@@ -1,0 +1,10 @@
+dados/
+brief/
+node_modules/
+app/node_modules/
+app/.next/
+app/out/
+__pycache__/
+*.png
+.playwright-mcp/
+.DS_Store

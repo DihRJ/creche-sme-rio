@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --surface-0: #f6f5f2;
+  --surface-1: #fcfcfb;
+  --surface-2: #efeeea;
+  --border:    #dedcd5;
+  --text-1:    #0b0b0b;
+  --text-2:    #52514e;
+  --text-3:    #7d7b75;
+  --fila:      #eb6834;
+  --ociosa:    #2a78d6;
+  --ganho:     #1baf7a;
+  --perda:     #e34948;
+  --grid:      #e6e4de;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --surface-0: #121211;
+    --surface-1: #1a1a19;
+    --surface-2: #232322;
+    --border:    #35352f;
+    --text-1:    #ffffff;
+    --text-2:    #c3c2b7;
+    --text-3:    #8e8d84;
+    --fila:      #d95926;
+    --ociosa:    #3987e5;
+    --ganho:     #199e70;
+    --perda:     #e66767;
+    --grid:      #2c2c29;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --surface-0: #121211; --surface-1: #1a1a19; --surface-2: #232322;
+  --border: #35352f; --text-1: #ffffff; --text-2: #c3c2b7; --text-3: #8e8d84;
+  --fila: #d95926; --ociosa: #3987e5; --ganho: #199e70; --perda: #e66767; --grid: #2c2c29;
+}
+
+html, body { background: var(--surface-0); color: var(--text-1); }
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-feature-settings: "tnum" 1;
+  -webkit-font-smoothing: antialiased;
+}
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.num { font-variant-numeric: tabular-nums; }
