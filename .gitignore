@@ -8,7 +8,9 @@ app/node_modules/
 app/.next/
 app/out/
 __pycache__/
-*.png
+# so os screenshots do prototipo analitico; o app da familia versiona os seus assets
+/*.png
+app/**/*.png
 .playwright-mcp/
 .DS_Store
 CLAUDE.md
@@ -17,3 +19,4 @@ BRIEFING.md
 .env.local
 .env
 .env.*.local
+.idea/

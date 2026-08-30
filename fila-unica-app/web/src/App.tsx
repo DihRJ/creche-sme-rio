@@ -1,122 +1,112 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+/**
+ * Roteador e layout (Dev B).
+ *
+ * As telas do Dev C (Vulnerabilidades, Documentos, MinhaInscricao) entram por
+ * `AguardandoDevC`, um marcador provisorio que vive AQUI, no arquivo do Dev B, para
+ * nao criar arquivo na pasta de outra pessoa. Quando as telas dele chegarem, e trocar
+ * o elemento da rota por um import e apagar o marcador.
+ */
+import { Link, Navigate, Route, BrowserRouter as Roteador, Routes, useParams } from "react-router-dom";
+import { USANDO_MOCK } from "./api/client";
+import { ProvedorSessao, RotaProtegida, useSessao } from "./auth";
+import Cadastrar from "./telas/Cadastrar";
+import DadosDaCrianca from "./telas/DadosDaCrianca";
+import Entrar from "./telas/Entrar";
+import EscolherUnidades from "./telas/EscolherUnidades";
+import Revisar from "./telas/Revisar";
+import { Aviso, Botao } from "./telas/provisorio-ui";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Layout({ children }: { children: React.ReactNode }) {
+  const { responsavel, sair } = useSessao();
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      {/* O banner e permanente e nao rola pra fora: ninguem digita CPF real aqui. */}
+      <div
+        className="px-4 py-2 text-center text-[12px] font-semibold"
+        style={{ background: "var(--fila)", color: "#fff" }}
+        role="note"
+      >
+        Ambiente de demonstração. Não use CPF ou dado pessoal de verdade.
+        {USANDO_MOCK && " Dados servidos pelo mock local."}
+      </div>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      <header className="border-b" style={{ borderColor: "var(--border)", background: "var(--surface-1)" }}>
+        <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
+          <Link to="/" className="flex items-baseline gap-2">
+            <span className="text-[15px] font-semibold tracking-tight">Fila Única</span>
+            <span className="hidden text-[12px] sm:inline" style={{ color: "var(--text-3)" }}>
+              uma criança, uma fila, uma vaga
+            </span>
+          </Link>
+          {responsavel && (
+            <div className="flex items-center gap-2">
+              <span className="hidden max-w-[14ch] truncate text-[12px] sm:inline" style={{ color: "var(--text-3)" }}>
+                {responsavel.nome}
+              </span>
+              <Botao variante="fantasma" aoClicar={sair}>Sair</Botao>
+            </div>
+          )}
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+      <main>{children}</main>
     </>
-  )
+  );
 }
 
-export default App
+/** Marcador das telas do Dev C. Provisorio, e some quando `src/ui/` chegar. */
+function AguardandoDevC({ titulo, proxima }: { titulo: string; proxima?: string }) {
+  const { id = "" } = useParams();
+  return (
+    <div className="mx-auto max-w-md space-y-4 px-4 py-8">
+      <Aviso tom="neutro" titulo={titulo}>
+        Esta tela é da trilha do Dev C e ainda não foi integrada. O fluxo do Dev B continua abaixo,
+        para o percurso de demonstração rodar inteiro.
+      </Aviso>
+      {proxima && (
+        <Link to={`/inscricao/${id}/${proxima}`}>
+          <Botao largura="cheia" variante="secundario">Seguir para a próxima etapa</Botao>
+        </Link>
+      )}
+    </div>
+  );
+}
+
+function Inicio() {
+  const { responsavel } = useSessao();
+  return <Navigate to={responsavel ? "/inscricao/nova" : "/entrar"} replace />;
+}
+
+export default function App() {
+  return (
+    <Roteador>
+      <ProvedorSessao>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Inicio />} />
+            <Route path="/entrar" element={<Entrar />} />
+            <Route path="/cadastrar" element={<Cadastrar />} />
+
+            <Route path="/inscricao/nova" element={<RotaProtegida><DadosDaCrianca /></RotaProtegida>} />
+            <Route path="/inscricao/:id/unidades" element={<RotaProtegida><EscolherUnidades /></RotaProtegida>} />
+            <Route
+              path="/inscricao/:id/vulnerabilidades"
+              element={<RotaProtegida><AguardandoDevC titulo="Vulnerabilidades" proxima="documentos" /></RotaProtegida>}
+            />
+            <Route
+              path="/inscricao/:id/documentos"
+              element={<RotaProtegida><AguardandoDevC titulo="Documentos" proxima="revisar" /></RotaProtegida>}
+            />
+            <Route path="/inscricao/:id/revisar" element={<RotaProtegida><Revisar /></RotaProtegida>} />
+            <Route
+              path="/inscricao/:id"
+              element={<RotaProtegida><AguardandoDevC titulo="Acompanhar a inscrição" /></RotaProtegida>}
+            />
+
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Layout>
+      </ProvedorSessao>
+    </Roteador>
+  );
+}
