@@ -10,6 +10,27 @@ formato, ajuste o endpoint — não vá mexer no `web/`.
 
 ---
 
+## Estado · atualizado durante o desenvolvimento
+
+| Janela | Entregas | Situação |
+| --- | --- | --- |
+| 0:20 → 1:00 | E17 saúde · E4 processo · E5 critérios · E6 ofertas | ✅ no ar |
+| 1:00 → 1:40 | E1 cadastro · E2 login · E3 /me · E7 · E8 | ✅ no ar |
+| 1:40 → 2:20 | E9 opções · E10 critérios + cruzamento | ✅ no ar |
+| 2:20 → 3:00 | E11 · E12 · E13 comprovantes | ✅ no ar |
+| 2:20 → 3:00 | **E14 finalizar** | ⬜ **próximo — o front está bloqueado nisto** |
+| 3:00 → 3:30 | Seed de demonstração · E15 resultado | ⬜ |
+| folga | E16 contatos | ⬜ |
+
+**Banco:** 488 unidades, 2.928 ofertas, 13 critérios somando 100 pontos, branch Neon `dev`.
+
+**Integração:** o smoke do Dev B roda contra a API real com
+`VITE_API_URL=http://localhost:3001/api npm run smoke` (de `web/`). 26 asserções passando; o único
+vermelho é E14. Antes de repetir, rode `npm run limpar` no `server/` — os smokes usam CPF fixo e a
+segunda execução bate em `CPF_JA_INSCRITO`.
+
+---
+
 ## Já está pronto para você
 
 - **O banco.** Projeto Neon "Creche SME RIO" (`curly-shadow-00730359`, org Jarom), PostgreSQL
@@ -28,38 +49,38 @@ formato, ajuste o endpoint — não vá mexer no `web/`.
 
 ### 0:20 → 1:00 · Banco de pé e catálogo no ar
 
-- [ ] `npm run verifica` antes de tudo. Se falhar, é problema de rede, não de código
-- [ ] `src/db.ts` — **dois** pools, e a distinção não é decorativa:
+- [x] `npm run verifica` antes de tudo. Se falhar, é problema de rede, não de código
+- [x] `src/db.ts` — **dois** pools, e a distinção não é decorativa:
       `pool` (runtime) usa `DATABASE_URL` (pooled) e `poolDireto` (DDL, seed, migração) usa
       `DATABASE_URL_UNPOOLED`. Helper `sql<T>(texto, params): Promise<T[]>`
-- [ ] `src/schema.sql` — DDL completo (tabela abaixo). Roda no boot pelo **`poolDireto`**,
+- [x] `src/schema.sql` — DDL completo (tabela abaixo). Roda no boot pelo **`poolDireto`**,
       `CREATE TABLE IF NOT EXISTS`
-- [ ] `src/seed.ts` — idempotente (`ON CONFLICT DO NOTHING`), lê de `dados/`:
+- [x] `src/seed.ts` — idempotente (`ON CONFLICT DO NOTHING`), lê de `dados/`:
   - `unidade` e `oferta` a partir de `unidades.json`. **Atenção:** `unidade.codigo` é string de 7
     dígitos com zero à esquerda. Ler como number quebra o join e não avisa
   - `historico_oferta` com `fila`, `matriculou`, `ociosas`, `turmas` do processo 2025
   - `criterio` a partir de `regua.json`, filtrando `ano = 2025` (são 13)
   - `processo` (2026) e `fase_calendario` (5 fases, datas fictícias plausíveis)
-- [ ] **E4** `GET /api/processo`, **E5** `GET /api/criterios`, **E6** `GET /api/ofertas`
+- [x] **E4** `GET /api/processo`, **E5** `GET /api/criterios`, **E6** `GET /api/ofertas`
 
 **Pronto quando** `curl /api/ofertas?busca=freguesia` devolve unidade com histórico preenchido.
 Avise o Dev B em voz alta: é o insumo da tela mais pesada dele.
 
 ### 1:00 → 1:40 · Sessão e inscrição
 
-- [ ] `src/auth.ts` — JWT HS256, `exigeAuth` como middleware. Login sem senha: CPF + nascimento
-- [ ] **E1** cadastro, **E2** login, **E3** `GET /me`
-- [ ] **E7** `POST /inscricoes` (cria rascunho), **E8** `GET /inscricoes/:id`
-- [ ] `montarInscricao(id)` — a função que devolve o `Inscricao` completo do contrato. **Escreva uma
+- [x] `src/auth.ts` — JWT HS256, `exigeAuth` como middleware. Login sem senha: CPF + nascimento
+- [x] **E1** cadastro, **E2** login, **E3** `GET /me`
+- [x] **E7** `POST /inscricoes` (cria rascunho), **E8** `GET /inscricoes/:id`
+- [x] `montarInscricao(id)` — a função que devolve o `Inscricao` completo do contrato. **Escreva uma
       vez e reuse em E7, E8, E9, E10 e E14.** Todo endpoint de inscrição devolve o objeto inteiro,
       para o front nunca precisar remontar estado
 
 ### 1:40 → 2:20 · Opções, critérios e pontuação
 
-- [ ] **E9** `PUT /inscricoes/:id/opcoes` — substitui tudo, ordem = ordem do array.
+- [x] **E9** `PUT /inscricoes/:id/opcoes` — substitui tudo, ordem = ordem do array.
       Rejeita: mais de 5 (`LIMITE_OPCOES`), oferta repetida, oferta de outro grupamento/turno
-- [ ] **E10** `PUT /inscricoes/:id/criterios` — substitui as declarações e dispara o cruzamento
-- [ ] `src/mock-cruzamento.ts` — RF2.2 simulado, **determinístico**:
+- [x] **E10** `PUT /inscricoes/:id/criterios` — substitui as declarações e dispara o cruzamento
+- [x] `src/mock-cruzamento.ts` — RF2.2 simulado, **determinístico**:
 
 ```ts
 // Confirma pela base sem depender de documento. Determinístico: o mesmo CPF dá
@@ -73,15 +94,15 @@ export function confirmadoPelaBase(cpf: string, codigoCriterio: number): boolean
 }
 ```
 
-- [ ] Pontuação: `pontos_que_contam` soma só `confirmado_base` e `documento_pendente`;
+- [x] Pontuação: `pontos_que_contam` soma só `confirmado_base` e `documento_pendente`;
       `pontos_declarados` soma tudo que foi declarado. **A diferença entre os dois é o argumento
       inteiro do projeto** e o Dev C mostra na tela
 
 ### 2:20 → 3:00 · Documentos e finalização
 
-- [ ] **E11** upload `multipart` com `multer` em `memoryStorage`, gravando em `documento.conteudo`
+- [x] **E11** upload `multipart` com `multer` em `memoryStorage`, gravando em `documento.conteudo`
       (`bytea`). Valide `MAX_ARQUIVO_BYTES` e `MIMES_ACEITOS` do contrato → `ARQUIVO_INVALIDO`
-- [ ] **E12** remover documento, **E13** baixar (autenticado: dono ou 403)
+- [x] **E12** remover documento, **E13** baixar (autenticado: dono ou 403)
 - [ ] **E14** `POST /inscricoes/:id/finalizar`:
   - bloqueia por: nenhuma opção, dados da criança incompletos, já enviada
   - **não bloqueia** por critério sem documento. Marca `nao_comprovado`, e escreve em `pendencias`
