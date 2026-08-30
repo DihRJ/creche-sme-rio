@@ -1,0 +1,67 @@
+[
+{
+"codigo": 28,
+"texto": "Criança cuja família seja inscrita no CadÚnico (Cadastro Único para Programas Sociais)?",
+"pontos": 51
+},
+{
+"codigo": 31,
+"texto": "A criança é público-alvo da educação especial?",
+"pontos": 25
+},
+{
+"codigo": 20,
+"texto": "A criança pertence a família monoparental?",
+"pontos": 4
+},
+{
+"codigo": 17,
+"texto": "A criança e/ou familiar do seu convívio diário é vitima de violência doméstica?",
+"pontos": 4
+},
+{
+"codigo": 18,
+"texto": "A criança e/ou alguém do núcleo familiar apresentam doenças crônicas graves?",
+"pontos": 3
+},
+{
+"codigo": 25,
+"texto": "Candidato tem pais ou responsáveis deficientes ?",
+"pontos": 3
+},
+{
+"codigo": 6,
+"texto": "Faz parte do programa bolsa família ou possui Cartão Carioca?",
+"pontos": 2
+},
+{
+"codigo": 27,
+"texto": "Criança aguardou em fila de espera no ano anterior sem ter sido atendida?",
+"pontos": 2
+},
+{
+"codigo": 12,
+"texto": "Existe algum membro do núcleo familiar que é presidiário ou ex-presidiário nos últimos 5 anos?",
+"pontos": 2
+},
+{
+"codigo": 16,
+"texto": "Existe algum membro do núcleo familiar que faz uso abusivo de drogas e/ou alcoól?",
+"pontos": 2
+},
+{
+"codigo": 23,
+"texto": "O candidato é refugiado?",
+"pontos": 2
+},
+{
+"codigo": 29,
+"texto": "O Candidato possui irmão matriculado na rede pública ou parceria?",
+"pontos": 0
+},
+{
+"codigo": 30,
+"texto": "O Candidato possui pais ou responsáveis com idade menor que 18 anos?",
+"pontos": 0
+}
+]

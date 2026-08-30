@@ -21,3 +21,4 @@ BRIEFING.md
 .env.local
 .env
 .env.*.local
+.idea/

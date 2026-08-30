@@ -8,11 +8,15 @@
     "dev": "npm run sync && vite",
     "build": "npm run sync && tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "smoke": "npm run sync && vite build --ssr smoke/main.ts --outDir node_modules/.tmp/smoke --logLevel error && node node_modules/.tmp/smoke/main.js"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.3",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",
