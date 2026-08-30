@@ -13,6 +13,7 @@ import Cadastrar from "./telas/Cadastrar";
 import DadosDaCrianca from "./telas/DadosDaCrianca";
 import Entrar from "./telas/Entrar";
 import EscolherUnidades from "./telas/EscolherUnidades";
+import Documentos from "./telas/Documentos";
 import Revisar from "./telas/Revisar";
 import Vulnerabilidades from "./telas/Vulnerabilidades";
 import { Aviso, Botao } from "./telas/provisorio-ui";
@@ -96,7 +97,7 @@ export default function App() {
             />
             <Route
               path="/inscricao/:id/documentos"
-              element={<RotaProtegida><AguardandoDevC titulo="Documentos" proxima="revisar" /></RotaProtegida>}
+              element={<RotaProtegida><Documentos /></RotaProtegida>}
             />
             <Route path="/inscricao/:id/revisar" element={<RotaProtegida><Revisar /></RotaProtegida>} />
             <Route
