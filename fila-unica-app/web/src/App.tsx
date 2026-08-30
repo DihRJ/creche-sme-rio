@@ -9,6 +9,7 @@ import { Link, Navigate, Route, BrowserRouter as Roteador, Routes } from "react-
 import { USANDO_MOCK } from "./api/client";
 import { ProvedorSessao, RotaProtegida, useSessao } from "./auth";
 import Cadastrar from "./telas/Cadastrar";
+import Conta from "./telas/Conta";
 import DadosDaCrianca from "./telas/DadosDaCrianca";
 import Entrar from "./telas/Entrar";
 import EscolherUnidades from "./telas/EscolherUnidades";
@@ -43,9 +44,13 @@ function Layout({ children }: { children: React.ReactNode }) {
           </Link>
           {me && (
             <div className="flex items-center gap-2">
-              <span className="hidden max-w-[14ch] truncate text-[12px] sm:inline" style={{ color: "var(--text-3)" }}>
+              <Link
+                to="/conta"
+                className="hidden max-w-[14ch] truncate text-[12px] underline sm:inline"
+                style={{ color: "var(--text-3)" }}
+              >
                 {me.responsavel.nome}
-              </span>
+              </Link>
               <Botao variante="fantasma" aoClicar={sair}>Sair</Botao>
             </div>
           )}
@@ -84,6 +89,7 @@ export default function App() {
             <Route path="/entrar" element={<Entrar />} />
             <Route path="/cadastrar" element={<Cadastrar />} />
 
+            <Route path="/conta" element={<RotaProtegida><Conta /></RotaProtegida>} />
             <Route path="/inscricoes" element={<RotaProtegida><Inscricoes /></RotaProtegida>} />
             <Route path="/inscricao/nova" element={<RotaProtegida><DadosDaCrianca /></RotaProtegida>} />
             <Route path="/inscricao/:id/unidades" element={<RotaProtegida><EscolherUnidades /></RotaProtegida>} />
