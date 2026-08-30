@@ -1,0 +1,61 @@
+# Blueprint do Render para o app da família (fila-unica-app/).
+#
+# Como usar: no painel do Render, New > Blueprint, aponte para este repositório e
+# escolha a branch `dev`. Ele cria os dois serviços de uma vez.
+#
+# As variáveis marcadas `sync: false` NÃO ficam no repositório e precisam ser
+# preenchidas no painel. As duas connection strings saem de:
+#
+#     neon env pull --branch production --file /tmp/prod.env --service postgres
+#
+# Use a branch `production` do Neon, não a `dev`: a `dev` é onde o time quebra
+# coisas durante o desenvolvimento. O schema e o seed sobem sozinhos no primeiro
+# boot (4s) — a API aplica o schema.sql e semeia o catálogo ao subir.
+
+services:
+  - type: web
+    name: fila-unica-api
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: fila-unica-app/server
+    buildCommand: npm ci
+    startCommand: npm start
+    # O Render marca o serviço como vivo por este endpoint. Ele responde mesmo se
+    # o seed falhar, de propósito: erro de seed é diagnosticável pelo log, e um
+    # serviço morto não deixa nem ler o log.
+    healthCheckPath: /api/saude
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      # Pooled: runtime da API. Host com sufixo -pooler.
+      - key: DATABASE_URL
+        sync: false
+      # Direta: DDL, migração e seed. Sem isto o schema não sobe.
+      - key: DATABASE_URL_UNPOOLED
+        sync: false
+      - key: JWT_SEGREDO
+        generateValue: true
+      # Publicada junto do calendário. Trocar depois das inscrições abrirem
+      # reembaralha o desempate de todo mundo — ver src/sorteio.ts.
+      - key: SEMENTE_PROCESSO
+        value: fila-unica-2026
+      # Origem exata do Static Site, para o CORS. Ajuste se o Render tiver
+      # acrescentado sufixo ao nome do serviço.
+      - key: WEB_ORIGIN
+        value: https://fila-unica-web.onrender.com
+
+  - type: web
+    name: fila-unica-web
+    runtime: static
+    rootDir: fila-unica-app/web
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://fila-unica-api.onrender.com/api
+    # Sem esta regra, recarregar em /inscricao/xyz devolve 404 e o jurado vê erro.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
