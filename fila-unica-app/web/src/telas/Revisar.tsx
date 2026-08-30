@@ -206,7 +206,7 @@ function Enviada({ inscricao }: { inscricao: Inscricao }) {
 
       <div className="card mt-6 p-5">
         <p className="text-[12px] uppercase tracking-wide" style={{ color: "var(--text-3)" }}>
-          Número de sorteio
+          Número de inscrição
         </p>
         <p className="num mt-1 text-[28px] font-bold tracking-wider">{inscricao.numero_sorteio}</p>
         <p className="mt-3 text-[12px] leading-relaxed" style={{ color: "var(--text-2)" }}>

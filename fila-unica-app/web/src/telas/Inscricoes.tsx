@@ -126,7 +126,7 @@ function Cartao({ inscricao: i }: { inscricao: Inscricao }) {
         {i.numero_sorteio && (
           <>
             {" "}
-            Número de sorteio{" "}
+            Número de inscrição{" "}
             <strong className="num" style={{ color: "var(--text-1)" }}>
               {i.numero_sorteio}
             </strong>
