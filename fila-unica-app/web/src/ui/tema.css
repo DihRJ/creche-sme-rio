@@ -349,3 +349,75 @@
   .fu-girador, .fu-carregando__linha { animation: none; }
   .fu-botao { transition: none; }
 }
+
+/* ────────────────────────  documento (tela Documentos)  ──────────────────────── */
+
+.fu-doc { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+
+.fu-doc__cabeca { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.fu-doc__texto { font-size: 15px; line-height: 1.4; color: var(--text-1); }
+.fu-doc__pontos { flex: none; font-size: 15px; font-weight: 700; color: var(--text-1); white-space: nowrap; }
+
+/* O arquivo já enviado: miniatura à esquerda, nome e tamanho à direita. */
+.fu-doc__anexo { display: flex; align-items: center; gap: 12px; }
+
+.fu-doc__mini {
+  flex: none;
+  width: 56px; height: 56px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-2);
+  object-fit: cover;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; letter-spacing: .04em;
+  color: var(--text-3);
+}
+
+.fu-doc__meta { min-width: 0; flex: 1; }
+.fu-doc__nome {
+  display: block; font-size: 14px; color: var(--text-1);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.fu-doc__tamanho { display: block; font-size: 12px; color: var(--text-3); }
+
+.fu-doc__acoes { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* O input nativo é feio e não dá para estilizar; o <label> vira o botão e o
+ * input fica escondido, mas continua sendo ele que o teclado e o leitor de tela
+ * enxergam — por isso `fu-sr` e não `display: none`. */
+.fu-doc__escolher {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 0 16px;
+  border: 1px solid var(--border); border-radius: var(--raio);
+  background: var(--surface-1); color: var(--text-1);
+  font-size: 15px; font-weight: 600; cursor: pointer;
+}
+.fu-doc__escolher:hover { background: var(--surface-2); }
+.fu-doc__entrada:focus-visible + .fu-doc__escolher {
+  outline: 2px solid var(--foco); outline-offset: 2px;
+}
+.fu-doc__entrada:disabled + .fu-doc__escolher { opacity: .5; cursor: not-allowed; }
+
+/* Barra indeterminada: `fetch` não expõe progresso de upload, então a barra diz
+ * "está acontecendo", não "falta tanto". Mentir com porcentagem falsa seria pior. */
+.fu-doc__barra {
+  height: 4px; border-radius: 999px; background: var(--surface-2); overflow: hidden;
+}
+.fu-doc__barra::after {
+  content: ""; display: block; height: 100%; width: 40%;
+  border-radius: 999px; background: var(--ociosa);
+  animation: fu-correr 1.1s ease-in-out infinite;
+}
+@keyframes fu-correr {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+
+.fu-doc__erro { margin: 0; font-size: 13px; font-weight: 500; color: var(--faltando-fg); }
+
+/* Bloco dos confirmados pela base: o RF2.2 dito de novo, na tela onde a família
+ * chegou esperando trabalho e vai descobrir que não tem nenhum. */
+.fu-base { padding: 16px; }
+.fu-base__titulo { margin: 0 0 8px; font-size: 15px; font-weight: 600; color: var(--confirmado-fg); }
+.fu-base__lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.fu-base__item { display: flex; gap: 8px; font-size: 14px; line-height: 1.4; color: var(--text-2); }

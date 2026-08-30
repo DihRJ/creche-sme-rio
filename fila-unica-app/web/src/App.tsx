@@ -1,10 +1,10 @@
 /**
  * Roteador e layout (Dev B).
  *
- * As telas do Dev C (Vulnerabilidades, Documentos, MinhaInscricao) entram por
- * `AguardandoDevC`, um marcador provisorio que vive AQUI, no arquivo do Dev B, para
- * nao criar arquivo na pasta de outra pessoa. Quando as telas dele chegarem, e trocar
- * o elemento da rota por um import e apagar o marcador.
+ * Vulnerabilidades e Documentos, do Dev C, ja estao integradas. Falta so a de
+ * acompanhamento (`/inscricao/:id`), que segue no `AguardandoDevC` — um marcador
+ * provisorio que vive AQUI, no arquivo do Dev B, para nao criar arquivo na pasta de
+ * outra pessoa. Quando ela chegar, e trocar o elemento da rota e apagar o marcador.
  */
 import { Link, Navigate, Route, BrowserRouter as Roteador, Routes, useParams } from "react-router-dom";
 import { USANDO_MOCK } from "./api/client";
@@ -13,6 +13,7 @@ import Cadastrar from "./telas/Cadastrar";
 import DadosDaCrianca from "./telas/DadosDaCrianca";
 import Entrar from "./telas/Entrar";
 import EscolherUnidades from "./telas/EscolherUnidades";
+import Documentos from "./telas/Documentos";
 import Inscricoes from "./telas/Inscricoes";
 import Revisar from "./telas/Revisar";
 import Vulnerabilidades from "./telas/Vulnerabilidades";
@@ -110,7 +111,7 @@ export default function App() {
             />
             <Route
               path="/inscricao/:id/documentos"
-              element={<RotaProtegida><AguardandoDevC titulo="Documentos" proxima="revisar" /></RotaProtegida>}
+              element={<RotaProtegida><Documentos /></RotaProtegida>}
             />
             <Route path="/inscricao/:id/revisar" element={<RotaProtegida><Revisar /></RotaProtegida>} />
             <Route

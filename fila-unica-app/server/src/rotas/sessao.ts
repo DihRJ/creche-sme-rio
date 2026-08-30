@@ -69,6 +69,66 @@ sessao.post(
   }),
 );
 
+// ── E16 ───────────────────────────────────────────────────────────────
+// RF1.5: o contato é editável pela família a qualquer momento, sem ida à unidade
+// e sem reabrir a inscrição.
+//
+// É o gargalo G4, e é o mais barato de consertar de todos: 5.994 crianças foram
+// convocadas e não matriculadas em 2025, cerca de 44 mil de 2021 a 2025. Sem
+// contato válido não há convocação — o diretor anota o telefone novo no caderno
+// porque o sistema não deixa editar, e a vaga se perde.
+//
+// Nunca faz UPDATE: cada correção desativa a versão anterior e insere uma nova.
+// Toda alteração fica versionada com data e origem, como o requisito exige.
+sessao.put(
+  "/me/contatos",
+  exigeAuth,
+  rota(async (req, res) => {
+    const id = autor(req);
+    const entrada: unknown = req.body?.contatos;
+    if (!Array.isArray(entrada) || entrada.length === 0)
+      throw new ErroHttp("VALIDACAO", "Envie a lista `contatos`.", "contatos");
+
+    const canaisValidos: CanalContato[] = ["telefone_principal", "telefone_alternativo", "email"];
+    const pedidos = entrada.map((c) => {
+      const canal = String((c as { canal?: unknown })?.canal ?? "") as CanalContato;
+      if (!canaisValidos.includes(canal))
+        throw new ErroHttp("VALIDACAO", `Canal inválido. Use um de: ${canaisValidos.join(", ")}.`, "canal");
+      const valor = String((c as { valor?: unknown })?.valor ?? "").trim();
+      if (!valor) throw new ErroHttp("VALIDACAO", "O contato não pode ficar em branco.", canal);
+      if (canal === "email" && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(valor))
+        throw new ErroHttp("VALIDACAO", "E-mail inválido.", canal);
+      if (canal !== "email" && valor.replace(/\D/g, "").length < 10)
+        throw new ErroHttp("VALIDACAO", "Telefone deve ter DDD e número.", canal);
+      return { canal, valor };
+    });
+    if (new Set(pedidos.map((p) => p.canal)).size !== pedidos.length)
+      throw new ErroHttp("VALIDACAO", "Você enviou o mesmo canal duas vezes.", "contatos");
+
+    await transacao(async (q) => {
+      for (const { canal, valor } of pedidos) {
+        const [atual] = await q<{ id: string; valor: string; versao: number }>(
+          `select id, valor, versao from contato where responsavel_id = $1 and canal = $2 and ativo`,
+          [id, canal],
+        );
+        // Valor igual não gera versão nova: histórico de contato serve para
+        // reconstituir mudança, não para registrar que a família reenviou o form.
+        if (atual?.valor === valor) continue;
+        if (atual) await q(`update contato set ativo = false where id = $1`, [atual.id]);
+        await q(
+          `insert into contato (responsavel_id, canal, valor, versao) values ($1,$2,$3,$4)`,
+          [id, canal, valor, (atual?.versao ?? 0) + 1],
+        );
+        await auditar("contato", id, "contato_alterado", id,
+          atual ? { canal, valor: atual.valor, versao: atual.versao } : null,
+          { canal, valor, versao: (atual?.versao ?? 0) + 1 }, q);
+      }
+    });
+
+    return ok(res, await carregarResponsavel(id));
+  }),
+);
+
 // ── E3 ────────────────────────────────────────────────────────────────
 sessao.get(
   "/me",
