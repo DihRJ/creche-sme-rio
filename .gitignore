@@ -10,3 +10,7 @@ __pycache__/
 .DS_Store
 CLAUDE.md
 BRIEFING.md
+.neon
+.env.local
+.env
+.env.*.local
