@@ -19,6 +19,7 @@ import { fileURLToPath } from "node:url";
 import { poolDireto, sqlDireto } from "./db.ts";
 import { GRUPAMENTOS, TURNOS } from "./contracts.gen.ts";
 import { normalizar } from "./texto.ts";
+import { confirmavelPelaBase } from "./mock-cruzamento.ts";
 
 const AQUI = dirname(fileURLToPath(import.meta.url));
 const DADOS = join(AQUI, "..", "dados");
@@ -70,10 +71,14 @@ export async function semear(): Promise<void> {
   for (const [i, c] of regua.entries()) {
     await sqlDireto(
       `insert into criterio (processo_ano, codigo, texto, pontos, e_desempate, exige_documento, ordem)
-       values ($1,$2,$3,$4,false,true,$5)
+       values ($1,$2,$3,$4,false,$5,$6)
        on conflict (processo_ano, codigo) do update
-         set texto = excluded.texto, pontos = excluded.pontos, ordem = excluded.ordem`,
-      [ANO, c.perg_id, c.pergunta_texto, c.pontos, i + 1],
+         set texto = excluded.texto, pontos = excluded.pontos,
+             exige_documento = excluded.exige_documento, ordem = excluded.ordem`,
+      // exige_documento = false quando alguma base publica consegue confirmar o
+      // criterio (RF2.2). Serve para a tela avisar ANTES de a familia declarar se
+      // ela vai precisar do papel, em vez de descobrir depois.
+      [ANO, c.perg_id, c.pergunta_texto, c.pontos, !confirmavelPelaBase(c.perg_id), i + 1],
     );
   }
 
