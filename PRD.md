@@ -42,6 +42,11 @@ no ato da inscrição e conferida no ato da matrícula.
 
 Nenhuma sala nova. Nenhum professor a mais. Nenhum critério de prioridade inventado.
 
+> **Estes números assumem que toda família convidada para uma vaga remanescente aceita.**
+> 3.020 das 4.595 crianças entram por uma oferta em creche que a família não escolheu, e a
+> seção 5 mede o quanto o resultado se move quando parte delas recusa. O piso, sem nenhuma
+> aceitação, é **+1.575 crianças**, e vem só do emparelhamento.
+
 ---
 
 ## 2. Os gargalos e onde cada um é resolvido
@@ -140,6 +145,68 @@ Infantil na modalidade creche (0 a 3 anos e 11 meses), rede pública e parceiras
 - O CPF da criança segue validado na Receita Federal, como já é hoje.
 - As mudanças de regra descritas na seção 7 exigem norma e publicação em Diário Oficial. O
   cronograma da seção 11 já considera isso.
+
+### A premissa que mais move o resultado: a taxa de aceite da Fase 3
+
+O ganho de +4.595 crianças não é uma peça só. Ele se decompõe em duas de natureza diferente:
+
+| Origem | Crianças | Depende de aceite? |
+| --- | ---: | --- |
+| Emparelhamento estável | +1.575 | **Não.** A criança entra numa creche que ela mesma escolheu |
+| Fase 3, vaga remanescente no bairro | +3.020 | **Sim.** A creche não está na lista dela |
+| **Total** | **+4.595** | 66% do ganho vem da Fase 3 |
+
+A simulação do `pipeline/04_cenarios.py` trata a vaga remanescente como alocação. O RF3.7 e o
+AD-8 do plano de implementação tratam a mesma coisa, corretamente, como **convite recusável**:
+recusar não custa posição em fila nenhuma. Os dois não podem estar certos ao mesmo tempo, e é o
+convite que vale. Então o número publicado é o teto, não a estimativa central.
+
+**Cenário pessimista** — cada vaga é oferecida uma vez e a recusa a deixa vazia:
+
+| Aceite | Na creche | Ganho | Vagas ociosas | Redução |
+| ---: | ---: | ---: | ---: | ---: |
+| 100% | 53.275 | +4.595 | 3.648 | −56% |
+| 80% | 52.671 | +3.991 | 4.252 | −48% |
+| 60% | 52.067 | +3.387 | 4.856 | −41% |
+| 40% | 51.463 | +2.783 | 5.460 | −34% |
+| 20% | 50.859 | +2.179 | 6.064 | −26% |
+| 0% | 50.255 | **+1.575** | 6.668 | −19% |
+
+Duas leituras que importam para a decisão:
+
+1. **O piso é positivo e não é pequeno.** Mesmo se ninguém aceitar vaga fora da própria lista,
+   trocar o algoritmo coloca 1.575 crianças a mais na creche e derruba a ociosidade em 19%. O
+   projeto não depende da Fase 3 para valer a pena; ele depende dela para valer +4.595.
+2. **A meta de ano 1 da seção 3 é +4.000 crianças, e ela exige aceite de 80%** — que é
+   exatamente o limiar do gatilho de revisão do AD-8. A meta e o gatilho são o mesmo número,
+   por coincidência, e vale ter isso consciente ao negociar a meta.
+
+**Cenário realista** — o AD-8 devolve a vaga recusada ao conjunto de remanescentes na hora,
+então ela só fica vazia se **todos** os candidatos elegíveis daquele bairro e grupamento
+recusarem. Com `k` candidatos por vaga, a chance de preencher é `1 − (1 − aceite)^k`:
+
+| Aceite | k=1 | k=2 | k=3 | k=5 |
+| ---: | ---: | ---: | ---: | ---: |
+| 80% | +3.991 | +4.474 | +4.571 | +4.594 |
+| 60% | +3.387 | +4.112 | +4.402 | +4.564 |
+| 40% | +2.783 | +3.508 | +3.943 | +4.360 |
+| 20% | +2.179 | +2.662 | +3.049 | +3.605 |
+
+Com aceite de 60% e apenas três candidatos por vaga, o ganho volta para +4.402. **A reoferta é
+o que sustenta o número**, e é por isso que ela é requisito e não detalhe de implementação.
+Medir `k` sobre as bases é o que falta para fechar a estimativa central; hoje temos o piso e o
+teto.
+
+**O número de crianças vulneráveis é o mais exposto, não o menos.** O `cenarios.json` não separa
+quantas das 3.020 realocações foram de criança em vulnerabilidade, então o +6.207 cai, sem
+nenhuma aceitação, para algo entre +3.187 e +6.207. O valor real fica perto do piso dessa faixa,
+porque o fallback percorre os não alocados já ordenados por prioridade, e nesse cenário a
+prioridade é a pontuação declarada, onde CadÚnico e Bolsa Família pesam 51 e 21 pontos. Ou seja:
+a Fase 3 atende preferencialmente quem tem mais direito, e é justamente por isso que o indicador
+social depende dela mais que o indicador de volume. Fechar a faixa é uma linha em
+`04_cenarios.py` e depende de ter as bases em máquina.
+
+Reproduzir: `python3 pipeline/07_sensibilidade.py`.
 
 ---
 

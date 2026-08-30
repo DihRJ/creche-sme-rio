@@ -55,6 +55,15 @@ Nenhuma vaga inventada, nenhum critério novo.
 **+4.595 crianças na creche. +6.207 crianças vulneráveis atendidas. Ociosidade 56% menor.
 Sem construir uma sala, sem contratar um professor, sem mudar um critério de prioridade.**
 
+> **A premissa que sustenta esse número, dita em voz alta.** 3.020 das 4.595 crianças entram
+> pela oferta automática no bairro, ou seja, numa creche que a família não escolheu, e a
+> simulação assume que todas aceitam. O sistema real trata essa oferta como convite recusável.
+> Sem nenhuma aceitação, o ganho é **+1.575 crianças** e a ociosidade cai 19% — vindo só do
+> emparelhamento. Com recusa devolvendo a vaga para o próximo da fila, como o sistema prevê,
+> 60% de aceite e três candidatos por vaga já devolvem +4.402.
+> Tabela completa: [PRD, seção 5](PRD.md#a-premissa-que-mais-move-o-resultado-a-taxa-de-aceite-da-fase-3)
+> · reproduzir: `python3 pipeline/07_sensibilidade.py`
+
 ---
 
 ## Arquitetura e abordagem
@@ -68,6 +77,9 @@ dados/ (bases reais da SME)
    └─ pipeline/04_cenarios.py    roda os 4 cenários que o painel compara
    │
    └──▶ app/public/data/*.json
+              │
+              ├─ pipeline/07_sensibilidade.py   lê os cenários e mede quanto do ganho
+              │                                 depende do aceite da Fase 3
               │
               └─ app/  Next.js 16 (static export) → Cloudflare Pages
                        sem backend, sem banco: o painel é HTML e JSON estático
@@ -132,6 +144,7 @@ python3 pipeline/01_pontuacao.py     # régua oficial por ano
 python3 pipeline/02_matching.py 2025 # motor, um ano
 python3 pipeline/03_export.py        # agregados do painel
 python3 pipeline/04_cenarios.py      # os 4 cenários
+python3 pipeline/07_sensibilidade.py # sensibilidade do ganho ao aceite da Fase 3
 
 cd app && npm install && npm run dev
 ```
