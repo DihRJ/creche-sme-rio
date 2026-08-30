@@ -4,6 +4,9 @@ App da família para a inscrição na creche da SME-Rio. `server/` é Node + Exp
 `web/` é Vite + React. Contexto e requisitos: [`../PRD.md`](../PRD.md). Sua trilha:
 [`README.md`](README.md) aponta o briefing de cada dev.
 
+> **Pendências abertas:** [`PARA-DEV-B.md`](PARA-DEV-B.md) — bug do redirecionamento pós-login
+> e a tela de listagem de inscrições que falta.
+
 ---
 
 ## Branch

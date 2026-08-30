@@ -14,6 +14,10 @@ Plano do sistema de produção (o que faríamos sem o limite de 4h): [`../PLANO.
 | **Dev B** | [`DEV-B-FRONT-INSCRICAO.md`](DEV-B-FRONT-INSCRICAO.md) | Scaffold, login, dados da criança, **escolha de unidades**, finalização, deploy do web |
 | **Dev C** | [`DEV-C-FRONT-COMPROVACAO.md`](DEV-C-FRONT-COMPROVACAO.md) | Kit de UI, **vulnerabilidades**, **documentos**, acompanhamento |
 
+> ⚠️ **Dev B:** há um bug e uma tela faltando documentados em
+> [`PARA-DEV-B.md`](PARA-DEV-B.md) — login não retoma inscrição existente, e falta a tela com
+> todas as inscrições.
+
 > **Leia [`AGENTS.md`](AGENTS.md) antes de codar.** Como rodar o backend, como apontar o smoke para
 > a API real, `npm run limpar` entre execuções, e as convenções que existem por causa de um erro
 > concreto. Vale para você e para o agente que estiver na sua máquina.
