@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ErroDaApi, mensagemDe } from "../api/client";
 import { useSessao } from "../auth";
+import { destinoPosLogin } from "../destino";
 import { erroDeCpf, erroDeData, mascaraCpf, mascaraTelefone, soDigitos } from "../formato";
 import { Aviso, Botao, Campo, Titulo } from "./provisorio-ui";
 
@@ -34,14 +35,16 @@ export default function Cadastrar() {
     setEnviando(true);
     setFalha(null);
     try {
-      await cadastrar({
+      const me = await cadastrar({
         nome: f.nome.trim(),
         cpf: soDigitos(f.cpf),
         nascimento: f.nascimento,
         telefone: soDigitos(f.telefone),
         email: f.email.trim(),
       });
-      navegar("/inscricao/nova", { replace: true });
+      // Conta nova nao tem inscricao, entao cai em /inscricao/nova. Passa pela mesma
+      // funcao de propósito: uma regra de destino so, em um lugar so.
+      navegar(await destinoPosLogin(me), { replace: true });
     } catch (erro) {
       // O servidor pode apontar o campo que reprovou; mostra no campo, nao no topo.
       if (erro instanceof ErroDaApi && erro.campo) {

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { mensagemDe } from "../api/client";
 import { useSessao } from "../auth";
+import { destinoPosLogin } from "../destino";
 import { erroDeCpf, erroDeData, mascaraCpf, soDigitos } from "../formato";
 import { Aviso, Botao, Campo, Titulo } from "./provisorio-ui";
 
@@ -25,8 +26,11 @@ export default function Entrar() {
     setEnviando(true);
     setFalha(null);
     try {
-      await entrar({ cpf: soDigitos(cpf), nascimento });
-      navegar(local.state?.de ?? "/inscricao/nova", { replace: true });
+      const me = await entrar({ cpf: soDigitos(cpf), nascimento });
+      // Respeita a rota de origem quando a familia foi barrada por <RotaProtegida>;
+      // fora disso, decide pelo estado das inscricoes em vez de mandar todo mundo
+      // para "cadastrar nova crianca".
+      navegar(local.state?.de ?? (await destinoPosLogin(me)), { replace: true });
     } catch (erro) {
       setFalha(mensagemDe(erro));
     } finally {
