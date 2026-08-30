@@ -6,6 +6,7 @@ import { sql, transacao } from "../db.ts";
 import { ErroHttp, ok, rota } from "../http.ts";
 import { exigirDono, montarInscricao } from "../inscricao.ts";
 import { recalcularSituacoes } from "../criterios.ts";
+import { numeroDeSorteio } from "../sorteio.ts";
 import { GRUPAMENTOS, MAX_OPCOES, TURNOS, type Grupamento, type Turno } from "../contracts.gen.ts";
 
 export const inscricoes = Router();
@@ -141,6 +142,40 @@ inscricoes.put(
         await q(`insert into opcao (inscricao_id, ordem, oferta_id) values ($1,$2,$3)`, [id, i + 1, ofertaId]);
       }
       await auditar("inscricao", id, "opcoes_alteradas", autor(req), null, { oferta_ids: ids }, q);
+    });
+
+    return ok(res, await montarInscricao(id));
+  }),
+);
+
+// ── E14 ───────────────────────────────────────────────────────────────
+// Finaliza a inscrição. Note o que NÃO bloqueia: critério declarado sem
+// comprovante passa, vira nao_comprovado e deixa de pontuar (RF2.4). Barrar é o
+// que hoje derruba a validação a 6,8%, porque atinge sobretudo quem tem direito
+// real e não consegue faltar ao trabalho para comprovar.
+inscricoes.post(
+  "/inscricoes/:id/finalizar",
+  exigeAuth,
+  rota(async (req, res) => {
+    const id = String(req.params.id);
+    const responsavelId = autor(req);
+    await exigirDono(id, responsavelId);
+    await exigirRascunho(id);
+
+    const [{ n }] = await sql<{ n: string }>(
+      `select count(*)::text n from opcao where inscricao_id = $1`,
+      [id],
+    );
+    if (Number(n) === 0)
+      throw new ErroHttp("VALIDACAO", "Escolha pelo menos uma creche antes de finalizar.", "opcoes");
+
+    await transacao(async (q) => {
+      await q(
+        `update inscricao set situacao = 'enviada', enviada_em = now(), numero_sorteio = $2 where id = $1`,
+        [id, numeroDeSorteio(id)],
+      );
+      await auditar("inscricao", id, "finalizada", responsavelId, { situacao: "rascunho" },
+        { situacao: "enviada" }, q);
     });
 
     return ok(res, await montarInscricao(id));

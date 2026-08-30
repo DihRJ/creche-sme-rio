@@ -1,0 +1,79 @@
+# Blueprint do Render para o app da família (fila-unica-app/).
+#
+# Como usar: no painel do Render, New > Blueprint, aponte para este repositório e
+# escolha a branch `dev`. Ele cria os dois serviços de uma vez.
+#
+# As variáveis marcadas `sync: false` NÃO ficam no repositório e precisam ser
+# preenchidas no painel. As duas connection strings saem de:
+#
+#     neon env pull --branch production --file /tmp/prod.env --service postgres
+#
+# Use a branch `production` do Neon, não a `dev`: a `dev` é onde o time quebra
+# coisas durante o desenvolvimento. O schema e o seed sobem sozinhos no primeiro
+# boot (4s) — a API aplica o schema.sql e semeia o catálogo ao subir.
+#
+# Das três armadilhas de deploy que o fila-unica-app/README.md lista, duas estão
+# resolvidas aqui em arquivo: CORS (WEB_ORIGIN) e o rewrite do SPA (routes). A
+# terceira, hibernação do plano free, não tem solução em arquivo: o serviço dorme
+# após ~15 min e leva ~50s para acordar, então acorde a API 2 minutos antes do
+# pitch ou aponte um ping externo para /api/saude.
+
+services:
+  - type: web
+    name: fila-unica-api
+    runtime: node
+    plan: free
+    # Os dois serviços já estão no ar nesta região. Render não deixa mudar região
+    # depois de criar o serviço, então isto NÃO é para mexer sem recriar.
+    # Nota para depois: o Neon está em us-east-2 e a API em oregon, então toda
+    # consulta atravessa o país. Migrar os dois para `ohio` encostaria um no outro.
+    region: oregon
+    rootDir: fila-unica-app/server
+    buildCommand: npm ci
+    startCommand: npm start
+    # O Render marca o serviço como vivo por este endpoint. Ele responde mesmo se
+    # o seed falhar, de propósito: erro de seed é diagnosticável pelo log, e um
+    # serviço morto não deixa nem ler o log.
+    healthCheckPath: /api/saude
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
+      # Pooled: runtime da API. Host com sufixo -pooler.
+      - key: DATABASE_URL
+        sync: false
+      # Direta: DDL, migração e seed. Sem isto o schema não sobe.
+      - key: DATABASE_URL_UNPOOLED
+        sync: false
+      - key: JWT_SEGREDO
+        generateValue: true
+      # Publicada junto do calendário. Trocar depois das inscrições abrirem
+      # reembaralha o desempate de todo mundo — ver src/sorteio.ts.
+      - key: SEMENTE_PROCESSO
+        value: fila-unica-2026
+      # Origem exata do Static Site, para o CORS. Ajuste se o Render tiver
+      # acrescentado sufixo ao nome do serviço.
+      - key: WEB_ORIGIN
+        value: https://fila-unica-web.onrender.com
+
+  - type: web
+    name: fila-unica-web
+    runtime: static
+    rootDir: fila-unica-app/web
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      # Precisa terminar em /api. É lida no BUILD, não em runtime: mudar aqui sem
+      # rodar um novo deploy do web não tem efeito nenhum.
+      - key: VITE_API_URL
+        value: https://fila-unica-api.onrender.com/api
+      # Redundante com a VITE_API_URL acima, e de propósito: se alguém apagar a
+      # URL da API, sem isto o cliente cai calado no mock e a demo passa a rodar
+      # sem tocar no banco, parecendo funcionar.
+      - key: VITE_USAR_MOCK
+        value: "false"
+    # Sem esta regra, recarregar em /inscricao/xyz devolve 404 e o jurado vê erro:
+    # o roteador é client-side, então toda rota tem que cair no index.html.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

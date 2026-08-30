@@ -139,12 +139,12 @@ export default function EscolherUnidades() {
         Escolher as creches
       </Titulo>
 
-      {/* A regra R1 tem que estar visivel o tempo todo, nao num aviso que rola pra fora. */}
+      {/* A regra R1 fica presa no topo, e curta: com cinco linhas ela ocupava 300px de
+          um viewport de 780px e empurrava a própria lista de opções para fora da tela. */}
       <div className="sticky top-0 z-10 -mx-4 mb-4 px-4 py-2" style={{ background: "var(--surface-0)" }}>
         <Aviso tom="atencao" titulo="A ordem importa">
-          O sistema tenta a 1ª primeiro, e só passa para a seguinte se não houver vaga para a sua
-          pontuação. Coloque em 1º a creche que você realmente quer: declarar a preferência
-          verdadeira nunca prejudica a sua classificação.
+          Coloque em 1º a creche que você realmente quer. Declarar a preferência verdadeira
+          nunca prejudica a sua classificação.
         </Aviso>
       </div>
 
@@ -156,27 +156,39 @@ export default function EscolherUnidades() {
             {idsEscolhidos.length} de {MAX_OPCOES}
           </span>
         </h2>
+        {cheio && (
+          <p className="mb-2 text-[12px]" style={{ color: "var(--text-3)" }}>
+            Você chegou ao limite de {MAX_OPCOES}. Para trocar, remova uma abaixo.
+          </p>
+        )}
 
         {escolhidas.length === 0 ? (
           <Vazio>Nenhuma creche escolhida ainda. Busque abaixo e toque em “Escolher”.</Vazio>
         ) : (
+          // Nome em cima com a largura toda, controles numa segunda linha. Na mesma
+          // linha, as tres setas de 44px comiam 132px dos 360 e sobravam ~200px: com
+          // `truncate` o nome virava "EDI PROFESSO..." e duas unidades de prefixo igual
+          // ficavam indistinguiveis; sem `truncate` ele quebrava em quatro linhas.
+          // Empilhar preserva o alvo de toque de 44px e o nome legivel.
           <ol className="space-y-2">
             {escolhidas.map((o, i) => (
-              <li key={o.oferta.id} className="card flex items-center gap-3 p-3">
-                <span
-                  className="num flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[15px] font-bold"
-                  style={{ background: "var(--surface-2)", color: "var(--text-1)" }}
-                  aria-label={`Opção ${o.ordem}`}
-                >
-                  {o.ordem}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-[14px] font-semibold">{o.oferta.unidade.nome}</p>
-                  <p className="truncate text-[12px]" style={{ color: "var(--text-3)" }}>
-                    {o.oferta.unidade.bairro} · CRE {o.oferta.unidade.cre}
-                  </p>
+              <li key={o.oferta.id} className="card p-3">
+                <div className="flex items-start gap-3">
+                  <span
+                    className="num flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[15px] font-bold"
+                    style={{ background: "var(--surface-2)", color: "var(--text-1)" }}
+                    aria-label={`Opção ${o.ordem}`}
+                  >
+                    {o.ordem}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[14px] font-semibold leading-snug">{o.oferta.unidade.nome}</p>
+                    <p className="truncate text-[12px]" style={{ color: "var(--text-3)" }}>
+                      {o.oferta.unidade.bairro} · CRE {o.oferta.unidade.cre}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex shrink-0 items-center gap-1">
+                <div className="mt-2 flex items-center justify-end gap-1">
                   <BotaoIcone rotulo={`Subir ${o.oferta.unidade.nome}`} desabilitado={i === 0 || !!salvando}
                     aoClicar={() => mover(i, i - 1)}>↑</BotaoIcone>
                   <BotaoIcone rotulo={`Descer ${o.oferta.unidade.nome}`}
@@ -398,11 +410,6 @@ function CartaoUnidade({
         </p>
       )}
 
-      {cheio && !escolhida && (
-        <p className="mt-2 text-[12px]" style={{ color: "var(--text-3)" }}>
-          Você já escolheu {MAX_OPCOES} creches. Remova uma para trocar.
-        </p>
-      )}
     </article>
   );
 }

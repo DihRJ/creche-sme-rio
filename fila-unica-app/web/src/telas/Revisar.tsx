@@ -111,6 +111,21 @@ export default function Revisar() {
               </p>
             </Aviso>
           </div>
+        ) : declarados === 0 ? (
+          // Sem este caso, quem nao declarou nada lia "tudo que voce declarou tem lastro"
+          // com 0 de 0 na tela: verdade tecnica que soa como elogio e esconde que a
+          // familia talvez tenha direito a ponto e nao saiba.
+          <div className="mt-4">
+            <Aviso tom="neutro" titulo="Você não declarou nenhum critério">
+              A pontuação vem de critérios como CadÚnico, Bolsa Família ou irmão já matriculado.
+              Se algum se aplica à sua família, vale voltar e declarar: é o que define a sua
+              posição na fila.{" "}
+              <Link to={`/inscricao/${id}/vulnerabilidades`}
+                    style={{ color: "var(--ociosa)", textDecoration: "underline" }}>
+                Ver os critérios
+              </Link>
+            </Aviso>
+          </div>
         ) : (
           <p className="mt-3 text-[13px]" style={{ color: "var(--text-2)" }}>
             Tudo que você declarou tem lastro e está contando.
@@ -140,8 +155,10 @@ export default function Revisar() {
                       style={{ background: "var(--surface-2)" }}>
                   {o.ordem}
                 </span>
+                {/* Sem truncar: e a ultima tela antes de um envio que congela a ordem.
+                    A familia tem que poder conferir qual creche esta em qual posicao. */}
                 <span className="min-w-0">
-                  <span className="block truncate text-[14px] font-medium">{o.oferta.unidade.nome}</span>
+                  <span className="block text-[14px] font-medium leading-snug">{o.oferta.unidade.nome}</span>
                   <span className="block text-[12px]" style={{ color: "var(--text-3)" }}>
                     {o.oferta.unidade.bairro}
                   </span>

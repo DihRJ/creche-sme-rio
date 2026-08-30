@@ -9,7 +9,8 @@
     "build": "npm run sync && tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "smoke": "npm run sync && vite build --ssr smoke/main.ts --outDir node_modules/.tmp/smoke --logLevel error && node node_modules/.tmp/smoke/main.js"
+    "smoke": "npm run sync && vite build --ssr smoke/main.ts --outDir node_modules/.tmp/smoke --logLevel error && node node_modules/.tmp/smoke/main.js",
+    "integracao": "npm run sync && vite build --ssr smoke/main-integracao.ts --outDir node_modules/.tmp/int --logLevel error && node node_modules/.tmp/int/main-integracao.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

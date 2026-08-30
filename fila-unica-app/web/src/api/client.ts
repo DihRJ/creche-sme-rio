@@ -92,9 +92,20 @@ export async function chamar<T>(rota: string, opts: Opcoes = {}): Promise<T> {
   try {
     envelope = (await resp.json()) as Resposta<T>;
   } catch {
+    // O contrato manda envelope em toda resposta, mas o 404 padrao do Express vem
+    // como HTML. Traduzimos pelo status para a tela nao mostrar "erro interno"
+    // quando o caso e "rota nao existe" ou "sem permissao".
+    const porStatus: Record<number, CodigoErro> = {
+      403: "SEM_PERMISSAO",
+      404: "NAO_ENCONTRADO",
+      409: "INSCRICAO_JA_ENVIADA",
+      422: "VALIDACAO",
+    };
     throw new ErroDaApi({
-      codigo: "ERRO_INTERNO",
-      mensagem: `O servidor respondeu ${resp.status} sem corpo entendivel.`,
+      codigo: porStatus[resp.status] ?? "ERRO_INTERNO",
+      mensagem: resp.status === 404
+        ? "Esse recurso não existe no servidor."
+        : `O servidor respondeu ${resp.status} sem corpo entendível.`,
     });
   }
 
