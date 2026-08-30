@@ -270,10 +270,17 @@
 .fu-passo__trilho { flex: 1; width: 1px; margin: 4px 0; background: var(--border); }
 .fu-passo__conector { width: 16px; height: 1px; background: var(--border); }
 
+.fu-passo__conteudo { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.fu-passos--vertical .fu-passo__conteudo { padding-bottom: 20px; }
+
 .fu-passo__titulo { font-size: 14px; color: var(--text-3); }
 .fu-passo[data-estado="concluido"] .fu-passo__titulo { color: var(--text-2); }
 .fu-passo[data-estado="atual"]     .fu-passo__titulo { color: var(--text-1); font-weight: 600; }
-.fu-passos--vertical .fu-passo__titulo { padding-bottom: 20px; }
+
+/* O período da fase. Em `text-3` para não competir com o título, mas nunca abaixo
+ * dele: é a informação que a família veio buscar (G6). */
+.fu-passo__detalhe { font-size: 13px; line-height: 1.4; color: var(--text-3); }
+.fu-passo[data-estado="atual"] .fu-passo__detalhe { color: var(--text-2); }
 
 /* ────────────────────────  critério (tela Vulnerabilidades)  ──────────────────────── */
 
@@ -421,3 +428,120 @@
 .fu-base__titulo { margin: 0 0 8px; font-size: 15px; font-weight: 600; color: var(--confirmado-fg); }
 .fu-base__lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .fu-base__item { display: flex; gap: 8px; font-size: 14px; line-height: 1.4; color: var(--text-2); }
+
+/* ────────────────────────  acompanhamento (tela MinhaInscricao)  ──────────────────────── */
+
+.fu-painel { padding: 20px 16px; }
+.fu-painel__rotulo {
+  margin: 0; font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* O número de sorteio é para ser LIDO EM VOZ ALTA no balcão da unidade: monoespaçado
+ * e espaçado, senão a família confunde 0 com O e 1 com l na hora que importa. */
+.fu-sorteio {
+  margin: 4px 0 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 30px; font-weight: 700; letter-spacing: .14em;
+  color: var(--text-1);
+}
+
+.fu-secao { margin-top: 16px; padding: 16px; }
+.fu-secao__titulo { margin: 0 0 12px; font-size: 15px; font-weight: 600; color: var(--text-1); }
+
+.fu-dados { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+.fu-dados dt { font-size: 13px; color: var(--text-3); }
+.fu-dados dd { margin: 0; font-size: 14px; color: var(--text-1); }
+
+/* Opções em ordem: o número é vinculante (R1) e precisa dominar a linha. */
+.fu-opcoes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.fu-opcao { display: flex; align-items: center; gap: 12px; }
+
+.fu-opcao__ordem {
+  flex: none;
+  display: flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-size: 14px; font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-1);
+}
+/* A primeira opção é a que a alocação tenta antes de todas. Ela se destaca. */
+.fu-opcao:first-child .fu-opcao__ordem {
+  background: var(--text-1); color: var(--surface-0); border-color: var(--text-1);
+}
+
+.fu-opcao__corpo { min-width: 0; flex: 1; }
+.fu-opcao__nome {
+  display: block; font-size: 14px; font-weight: 500; color: var(--text-1);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.fu-opcao__local { display: block; font-size: 12px; color: var(--text-3); }
+
+/* Quantos dias faltam para a fase atual acabar. É a frase que responde ao G6:
+ * hoje a família descobre o prazo quando já perdeu. */
+.fu-prazo {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 4px; padding: 3px 8px;
+  border: 1px solid var(--pendente-br); border-radius: 999px;
+  background: var(--pendente-bg); color: var(--pendente-fg);
+  font-size: 12px; font-weight: 600;
+}
+.fu-prazo[data-urgente="true"] {
+  border-color: var(--faltando-br); background: var(--faltando-bg); color: var(--faltando-fg);
+}
+
+/* ────────────────────────  resultado (E15, RF4.1)  ──────────────────────── */
+
+.fu-resultado__manchete { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.35; color: var(--tom-fg); }
+.fu-resultado__unidade { margin: 6px 0 0; font-size: 15px; color: var(--text-1); }
+
+/* Uma linha por opção: a comparação que o RF4.1 exige é pontuação × nota de corte,
+ * e ela precisa caber lado a lado em 360px sem rolagem horizontal. */
+.fu-corte { display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; }
+
+.fu-corte__topo { display: flex; align-items: baseline; gap: 10px; }
+.fu-corte__ordem {
+  flex: none; font-size: 12px; font-weight: 700;
+  font-variant-numeric: tabular-nums; color: var(--text-3);
+}
+.fu-corte__unidade {
+  min-width: 0; flex: 1; font-size: 14px; font-weight: 500; color: var(--text-1);
+}
+
+/* Os dois números, um contra o outro. Sem tabela: em 360px tabela vira rolagem. */
+.fu-corte__placar { display: flex; align-items: stretch; gap: 8px; }
+.fu-corte__lado { flex: 1; padding: 8px 10px; border-radius: 8px; background: var(--surface-2); }
+.fu-corte__rotulo { display: block; font-size: 11px; line-height: 1.3; color: var(--text-3); }
+.fu-corte__valor {
+  display: block; margin-top: 2px;
+  font-size: 20px; font-weight: 700; line-height: 1.1;
+  font-variant-numeric: tabular-nums; color: var(--text-1);
+}
+.fu-corte__vs {
+  flex: none; align-self: center;
+  font-size: 12px; font-weight: 600; color: var(--text-3);
+}
+
+.fu-corte__conta { margin: 0; font-size: 12px; line-height: 1.45; color: var(--text-3); }
+.fu-corte__veredito { margin: 0; font-size: 13px; font-weight: 600; color: var(--tom-fg); }
+
+/* A explicação em prosa. Largura de leitura, não de contêiner: linha de 90
+ * caracteres é onde o olho perde a próxima linha. */
+.fu-explicacao {
+  margin: 0; max-width: 62ch;
+  font-size: 14px; line-height: 1.65; color: var(--text-2);
+  white-space: pre-line;
+}
+.fu-explicacao__origem {
+  margin: 10px 0 0; font-size: 12px; line-height: 1.45; color: var(--text-3);
+}
+
+/* Aviso de que o painel é exemplo, não o resultado desta criança. */
+.fu-exemplo {
+  margin: 0 0 12px; padding: 8px 12px;
+  border: 1px dashed var(--border); border-radius: 8px;
+  font-size: 12px; line-height: 1.45; color: var(--text-2);
+}

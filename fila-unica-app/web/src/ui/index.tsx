@@ -273,6 +273,9 @@ export interface Passo {
   chave: string;
   titulo: string;
   estado: "concluido" | "atual" | "futuro";
+  /** Linha de apoio sob o título. Na linha do tempo do E4 é o período da fase,
+   *  que é justamente o que a família não sabe hoje (G6). */
+  detalhe?: ReactNode;
 }
 
 /**
@@ -319,9 +322,12 @@ export function Passos({
             </span>
           )}
 
-          <span className="fu-passo__titulo">
-            {p.titulo}
-            {p.estado === "atual" && <span className="fu-sr"> (etapa atual)</span>}
+          <span className="fu-passo__conteudo">
+            <span className="fu-passo__titulo">
+              {p.titulo}
+              {p.estado === "atual" && <span className="fu-sr"> (etapa atual)</span>}
+            </span>
+            {p.detalhe && <span className="fu-passo__detalhe">{p.detalhe}</span>}
           </span>
 
           {!vertical && i < passos.length - 1 && (

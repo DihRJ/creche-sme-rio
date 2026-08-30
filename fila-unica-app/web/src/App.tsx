@@ -1,12 +1,11 @@
 /**
  * Roteador e layout (Dev B).
  *
- * As telas do Dev C (Vulnerabilidades, Documentos, MinhaInscricao) entram por
- * `AguardandoDevC`, um marcador provisorio que vive AQUI, no arquivo do Dev B, para
- * nao criar arquivo na pasta de outra pessoa. Quando as telas dele chegarem, e trocar
- * o elemento da rota por um import e apagar o marcador.
+ * As tres telas do Dev C (Vulnerabilidades, Documentos, MinhaInscricao) ja estao
+ * integradas; o marcador `AguardandoDevC` que segurava as rotas foi apagado quando
+ * a ultima delas chegou, como o proprio comentario original mandava.
  */
-import { Link, Navigate, Route, BrowserRouter as Roteador, Routes, useParams } from "react-router-dom";
+import { Link, Navigate, Route, BrowserRouter as Roteador, Routes } from "react-router-dom";
 import { USANDO_MOCK } from "./api/client";
 import { ProvedorSessao, RotaProtegida, useSessao } from "./auth";
 import Cadastrar from "./telas/Cadastrar";
@@ -14,9 +13,10 @@ import DadosDaCrianca from "./telas/DadosDaCrianca";
 import Entrar from "./telas/Entrar";
 import EscolherUnidades from "./telas/EscolherUnidades";
 import Documentos from "./telas/Documentos";
+import MinhaInscricao from "./telas/MinhaInscricao";
 import Revisar from "./telas/Revisar";
 import Vulnerabilidades from "./telas/Vulnerabilidades";
-import { Aviso, Botao } from "./telas/provisorio-ui";
+import { Botao } from "./telas/provisorio-ui";
 
 function Layout({ children }: { children: React.ReactNode }) {
   const { responsavel, sair } = useSessao();
@@ -56,24 +56,6 @@ function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-/** Marcador das telas do Dev C. Provisorio, e some quando `src/ui/` chegar. */
-function AguardandoDevC({ titulo, proxima }: { titulo: string; proxima?: string }) {
-  const { id = "" } = useParams();
-  return (
-    <div className="mx-auto max-w-md space-y-4 px-4 py-8">
-      <Aviso tom="neutro" titulo={titulo}>
-        Esta tela é da trilha do Dev C e ainda não foi integrada. O fluxo do Dev B continua abaixo,
-        para o percurso de demonstração rodar inteiro.
-      </Aviso>
-      {proxima && (
-        <Link to={`/inscricao/${id}/${proxima}`}>
-          <Botao largura="cheia" variante="secundario">Seguir para a próxima etapa</Botao>
-        </Link>
-      )}
-    </div>
-  );
-}
-
 function Inicio() {
   const { responsavel } = useSessao();
   return <Navigate to={responsavel ? "/inscricao/nova" : "/entrar"} replace />;
@@ -102,7 +84,7 @@ export default function App() {
             <Route path="/inscricao/:id/revisar" element={<RotaProtegida><Revisar /></RotaProtegida>} />
             <Route
               path="/inscricao/:id"
-              element={<RotaProtegida><AguardandoDevC titulo="Acompanhar a inscrição" /></RotaProtegida>}
+              element={<RotaProtegida><MinhaInscricao /></RotaProtegida>}
             />
 
             <Route path="*" element={<Navigate to="/" replace />} />
