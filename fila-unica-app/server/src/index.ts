@@ -6,6 +6,8 @@ import { fechar, pool } from "./db.ts";
 import { ok, rota, tratarErro } from "./http.ts";
 import { migrar } from "./migrar.ts";
 import { catalogo } from "./rotas/catalogo.ts";
+import { inscricoes } from "./rotas/inscricoes.ts";
+import { sessao } from "./rotas/sessao.ts";
 import { semear } from "./seed.ts";
 
 const PORTA = Number(process.env.PORT ?? 3001);
@@ -29,6 +31,8 @@ app.get(
 );
 
 app.use(BASE_API, catalogo);
+app.use(BASE_API, sessao);
+app.use(BASE_API, inscricoes);
 app.use(tratarErro);
 
 const servidor = app.listen(PORTA, async () => {
