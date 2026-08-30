@@ -11,12 +11,22 @@
 # Use a branch `production` do Neon, não a `dev`: a `dev` é onde o time quebra
 # coisas durante o desenvolvimento. O schema e o seed sobem sozinhos no primeiro
 # boot (4s) — a API aplica o schema.sql e semeia o catálogo ao subir.
+#
+# Das três armadilhas de deploy que o fila-unica-app/README.md lista, duas estão
+# resolvidas aqui em arquivo: CORS (WEB_ORIGIN) e o rewrite do SPA (routes). A
+# terceira, hibernação do plano free, não tem solução em arquivo: o serviço dorme
+# após ~15 min e leva ~50s para acordar, então acorde a API 2 minutos antes do
+# pitch ou aponte um ping externo para /api/saude.
 
 services:
   - type: web
     name: fila-unica-api
     runtime: node
     plan: free
+    # Os dois serviços já estão no ar nesta região. Render não deixa mudar região
+    # depois de criar o serviço, então isto NÃO é para mexer sem recriar.
+    # Nota para depois: o Neon está em us-east-2 e a API em oregon, então toda
+    # consulta atravessa o país. Migrar os dois para `ohio` encostaria um no outro.
     region: oregon
     rootDir: fila-unica-app/server
     buildCommand: npm ci
@@ -52,9 +62,17 @@ services:
     buildCommand: npm ci && npm run build
     staticPublishPath: dist
     envVars:
+      # Precisa terminar em /api. É lida no BUILD, não em runtime: mudar aqui sem
+      # rodar um novo deploy do web não tem efeito nenhum.
       - key: VITE_API_URL
         value: https://fila-unica-api.onrender.com/api
-    # Sem esta regra, recarregar em /inscricao/xyz devolve 404 e o jurado vê erro.
+      # Redundante com a VITE_API_URL acima, e de propósito: se alguém apagar a
+      # URL da API, sem isto o cliente cai calado no mock e a demo passa a rodar
+      # sem tocar no banco, parecendo funcionar.
+      - key: VITE_USAR_MOCK
+        value: "false"
+    # Sem esta regra, recarregar em /inscricao/xyz devolve 404 e o jurado vê erro:
+    # o roteador é client-side, então toda rota tem que cair no index.html.
     routes:
       - type: rewrite
         source: /*
