@@ -168,11 +168,15 @@ function calcularPendencias(
   const pontosPerdidos = semLastro.reduce((s, r) => s + r.pontos_se_valer, 0);
   if (semLastro.length > 0) {
     const um = semLastro.length === 1;
+    // NOTA para quem mexer neste texto: o smoke do front faz asserção na
+    // substring "pontos a menos". Isso é acoplamento frágil — o certo é o front
+    // conferir `pontos_declarados - pontos_que_contam`, que é número e não prosa.
+    // Mantido o termo até o front soltar a asserção.
     p.push(
       (um
         ? "1 critério declarado está sem comprovante e não vai pontuar."
         : `${semLastro.length} critérios declarados estão sem comprovante e não vão pontuar.`) +
-        ` São ${pontosPerdidos} ponto${pontosPerdidos === 1 ? "" : "s"} que você está deixando na mesa.`,
+        ` São ${pontosPerdidos} ponto${pontosPerdidos === 1 ? "" : "s"} a menos na sua classificação.`,
     );
   }
   return p;

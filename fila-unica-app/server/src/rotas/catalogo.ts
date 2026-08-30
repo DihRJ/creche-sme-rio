@@ -6,7 +6,9 @@ import { ok, rota } from "../http.ts";
 import type { Criterio, Fase, Oferta, PaginaOfertas, Processo } from "../contracts.gen.ts";
 
 export const catalogo = Router();
-const POR_PAGINA = 24;
+// 12 por pagina: rede movel (RNF1) e o que a tela do front pagina. O cliente deve
+// ler `por_pagina` da resposta, nunca fixar o numero.
+const POR_PAGINA = 12;
 
 function situacaoDaFase(inicio: string, fim: string, hoje: string): Fase["situacao"] {
   if (hoje < inicio) return "futura";
