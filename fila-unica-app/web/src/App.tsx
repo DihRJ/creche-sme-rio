@@ -13,12 +13,13 @@ import Cadastrar from "./telas/Cadastrar";
 import DadosDaCrianca from "./telas/DadosDaCrianca";
 import Entrar from "./telas/Entrar";
 import EscolherUnidades from "./telas/EscolherUnidades";
+import Inscricoes from "./telas/Inscricoes";
 import Revisar from "./telas/Revisar";
 import Vulnerabilidades from "./telas/Vulnerabilidades";
 import { Aviso, Botao } from "./telas/provisorio-ui";
 
 function Layout({ children }: { children: React.ReactNode }) {
-  const { responsavel, sair } = useSessao();
+  const { me, sair } = useSessao();
   return (
     <>
       {/* O banner e permanente e nao rola pra fora: ninguem digita CPF real aqui. */}
@@ -39,10 +40,10 @@ function Layout({ children }: { children: React.ReactNode }) {
               uma criança, uma fila, uma vaga
             </span>
           </Link>
-          {responsavel && (
+          {me && (
             <div className="flex items-center gap-2">
               <span className="hidden max-w-[14ch] truncate text-[12px] sm:inline" style={{ color: "var(--text-3)" }}>
-                {responsavel.nome}
+                {me.responsavel.nome}
               </span>
               <Botao variante="fantasma" aoClicar={sair}>Sair</Botao>
             </div>
@@ -74,8 +75,20 @@ function AguardandoDevC({ titulo, proxima }: { titulo: string; proxima?: string 
 }
 
 function Inicio() {
-  const { responsavel } = useSessao();
-  return <Navigate to={responsavel ? "/inscricao/nova" : "/entrar"} replace />;
+  const { me, carregando } = useSessao();
+  // Espera o /me responder antes de decidir. Sem isto, quem abre a URL com sessao
+  // salva e jogado no login: no primeiro render `me` ainda e nulo porque a
+  // confirmacao do token esta em voo.
+  if (carregando) {
+    return (
+      <p className="p-6 text-sm" style={{ color: "var(--text-3)" }}>
+        Carregando...
+      </p>
+    );
+  }
+  // Logada com inscrição: a lista. Logada sem nenhuma: direto para a primeira.
+  if (!me) return <Navigate to="/entrar" replace />;
+  return <Navigate to={me.inscricoes.length > 0 ? "/inscricoes" : "/inscricao/nova"} replace />;
 }
 
 export default function App() {
@@ -88,6 +101,7 @@ export default function App() {
             <Route path="/entrar" element={<Entrar />} />
             <Route path="/cadastrar" element={<Cadastrar />} />
 
+            <Route path="/inscricoes" element={<RotaProtegida><Inscricoes /></RotaProtegida>} />
             <Route path="/inscricao/nova" element={<RotaProtegida><DadosDaCrianca /></RotaProtegida>} />
             <Route path="/inscricao/:id/unidades" element={<RotaProtegida><EscolherUnidades /></RotaProtegida>} />
             <Route
