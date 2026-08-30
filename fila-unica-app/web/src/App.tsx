@@ -17,7 +17,6 @@ import Inscricoes from "./telas/Inscricoes";
 import MinhaInscricao from "./telas/MinhaInscricao";
 import Revisar from "./telas/Revisar";
 import Vulnerabilidades from "./telas/Vulnerabilidades";
-import { Botao } from "./telas/provisorio-ui";
 
 function Layout({ children }: { children: React.ReactNode }) {
   const { me, sair } = useSessao();
@@ -33,20 +32,31 @@ function Layout({ children }: { children: React.ReactNode }) {
         {USANDO_MOCK && " Dados servidos pelo mock local."}
       </div>
 
-      <header className="border-b" style={{ borderColor: "var(--border)", background: "var(--surface-1)" }}>
+      {/* Barra institucional azul, como a do matricula.rio: é o elemento que a
+          família reconhece antes de ler qualquer palavra da tela. */}
+      <header style={{ background: "var(--marca-escura)", color: "var(--sobre-marca-escura)" }}>
         <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
-          <Link to="/" className="flex items-baseline gap-2">
+          <Link to="/" className="flex items-baseline gap-2" style={{ color: "inherit" }}>
             <span className="text-[15px] font-semibold tracking-tight">Fila Única</span>
-            <span className="hidden text-[12px] sm:inline" style={{ color: "var(--text-3)" }}>
+            <span className="hidden text-[12px] opacity-80 sm:inline">
               uma criança, uma fila, uma vaga
             </span>
           </Link>
           {me && (
             <div className="flex items-center gap-2">
-              <span className="hidden max-w-[14ch] truncate text-[12px] sm:inline" style={{ color: "var(--text-3)" }}>
+              <span className="hidden max-w-[14ch] truncate text-[12px] opacity-80 sm:inline">
                 {me.responsavel.nome}
               </span>
-              <Botao variante="fantasma" aoClicar={sair}>Sair</Botao>
+              {/* Botão de cromo, não de formulário: o `Botao` do kit pinta com
+                  --text-2, que sobre o azul institucional some. Mantém os 44px de
+                  alvo de toque e o foco visível. */}
+              <button
+                type="button"
+                onClick={sair}
+                className="fu-sair"
+              >
+                Sair
+              </button>
             </div>
           )}
         </div>

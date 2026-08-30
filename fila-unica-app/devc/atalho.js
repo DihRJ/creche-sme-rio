@@ -16,9 +16,9 @@
  * entra por E2 e reaproveita a inscrição que o /me devolver.
  *
  * Rotas aceitas em `rota`:
- *   "vulnerabilidades"  -> pronta
- *   "documentos"        -> ainda o marcador do Dev B
- *   ""                  -> MinhaInscricao, ainda o marcador do Dev B
+ *   "vulnerabilidades"  -> critérios, estado item a item e pontos perdidos
+ *   "documentos"        -> envio de comprovante, miniatura, baixar e remover
+ *   ""                  -> MinhaInscricao: situação, sorteio, calendário e resultado
  *
  * Uso:
  *   atalhoDevC()                                        // caso do pitch

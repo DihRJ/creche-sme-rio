@@ -1,35 +1,103 @@
 @import "tailwindcss";
 
-/* Tokens iguais aos do painel analitico (app/src/app/globals.css): a paleta ja foi
-   validada para daltonismo nos dois temas e nao vale a pena manter duas verdades. */
+/* Paleta derivada do matricula.rio, o site oficial da SME-Rio. Os mesmos tokens
+   vivem em src/ui/tema.css e em app/src/app/globals.css: uma identidade so.
+   Contraste WCAG AA conferido nos dois temas por `node devc/contraste.mjs`. */
 :root {
   color-scheme: light;
-  --surface-0: #f6f5f2;
-  --surface-1: #fcfcfb;
-  --surface-2: #efeeea;
-  --border:    #dedcd5;
-  --text-1:    #0b0b0b;
-  --text-2:    #52514e;
-  --text-3:    #7d7b75;
-  --fila:      #eb6834;
-  --ociosa:    #2a78d6;
-  --ganho:     #1baf7a;
-  --perda:     #e34948;
+
+  /* base — cinzas frios, para conviver com o azul institucional */
+  --surface-0: #f1f5f9;
+  --surface-1: #ffffff;
+  --surface-2: #e4ecf2;
+  --border:    #c2d2df;
+  --text-1:    #181818;   /* 16.2:1 sobre surface-0 */
+  --text-2:    #424242;   /*  9.2:1 — corpo secundário */
+  --text-3:    #5f6c78;   /*  4.8:1 — mínimo AA. Não use abaixo disto */
+
+  /* identidade da SME-Rio, tirada do matricula.rio */
+  --marca:              #00508a;   /* --deep-sea-blue do site */
+  --marca-escura:       #004a80;   /* --header-blue do site */
+  --marca-forte:        #034c7f;   /* o .btn-continuar do site */
+  --sobre-marca:        #ffffff;   /* texto sobre preenchimento de marca */
+  --sobre-marca-escura: #ffffff;   /* texto sobre a barra institucional */
+  --acento:             #1bb5da;   /* ciano do site: borda e realce */
+  --acento-escuro:      #008eb6;
+
+  /* séries de dado, compartilhadas com o painel */
+  --fila:      #bf4718;
+  --ociosa:    #0a6fb5;
+  --ganho:     #12805c;
+  --perda:     #c9342f;
+  --grid:      #dde6ee;
+
+  /* estados por critério (RF2.3).
+   * A cor NUNCA é o único sinal: todo chip carrega ícone e rótulo em texto
+   * (WCAG 1.4.1). O `pendente` saiu do azul para o ciano porque azul virou a cor
+   * da marca — estado e cromo institucional não podem ser a mesma coisa. */
+  --confirmado-fg:  #0f7350;
+  --confirmado-bg:  #e3f4ec;
+  --confirmado-br:  #a3ddc5;
+
+  --pendente-fg:    #03657f;
+  --pendente-bg:    #e0f3f9;
+  --pendente-br:    #96d3e5;
+
+  --faltando-fg:    #b3282b;
+  --faltando-bg:    #fdecec;
+  --faltando-br:    #f2b8b8;
+
+  --neutro-fg:      #424242;
+  --neutro-bg:      #e4ecf2;
+  --neutro-br:      #c2d2df;
+
+  --foco:           #0a6fb5;
+  --raio:           10px;   /* o mesmo do .btn-continuar do matricula.rio */
 }
 @media (prefers-color-scheme: dark) {
   :root:where(:not([data-theme="light"])) {
     color-scheme: dark;
-    --surface-0: #121211;
-    --surface-1: #1a1a19;
-    --surface-2: #232322;
-    --border:    #35352f;
+    --surface-0: #0e1418;
+    --surface-1: #151d23;
+    --surface-2: #1e2830;
+    --border:    #35444f;
     --text-1:    #ffffff;
-    --text-2:    #c3c2b7;
-    --text-3:    #8e8d84;
-    --fila:      #d95926;
-    --ociosa:    #3987e5;
-    --ganho:     #199e70;
-    --perda:     #e66767;
+    --text-2:    #c2ced8;
+    --text-3:    #8fa0ad;
+
+    --marca:              #4aa3dc;
+    --marca-escura:       #0d2b42;
+    --marca-forte:        #5fb0e2;
+    /* Inverte no escuro: preenchimento claro pede texto escuro. A barra
+       institucional continua escura, e por isso tem token próprio. */
+    --sobre-marca:        #08131a;
+    --sobre-marca-escura: #ffffff;
+    --acento:             #3fc9e8;
+    --acento-escuro:      #1ba7c8;
+
+    --fila:      #e8783f;
+    --ociosa:    #4aa3dc;
+    --ganho:     #2fb98a;
+    --perda:     #eb7070;
+    --grid:      #263239;
+
+    --confirmado-fg: #5fd6a6;
+    --confirmado-bg: #0e2620;
+    --confirmado-br: #245f48;
+
+    --pendente-fg:   #5fc9e8;
+    --pendente-bg:   #0b242e;
+    --pendente-br:   #1d5a70;
+
+    --faltando-fg:   #f39494;
+    --faltando-bg:   #2a1517;
+    --faltando-br:   #6e3236;
+
+    --neutro-fg:     #c2ced8;
+    --neutro-bg:     #1e2830;
+    --neutro-br:     #35444f;
+
+    --foco:          #5fc9e8;
   }
 }
 
@@ -41,7 +109,11 @@ body {
   margin: 0;
   background: var(--surface-0);
   color: var(--text-1);
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* O matricula.rio usa Gotham, que é licenciada e servida do domínio deles.
+     Hotlink seria frágil e legalmente duvidoso, então fica a pilha de fallback
+     que o próprio site declara, com a do sistema na frente. */
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica,
+               Roboto, Arial, sans-serif;
   font-feature-settings: "tnum" 1;
   -webkit-font-smoothing: antialiased;
 }
@@ -50,7 +122,7 @@ body {
 .card {
   background: var(--surface-1);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: var(--raio);
 }
 .num { font-variant-numeric: tabular-nums; }
 

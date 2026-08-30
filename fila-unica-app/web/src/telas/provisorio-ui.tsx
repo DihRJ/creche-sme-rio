@@ -25,10 +25,10 @@ export function Botao({
     "inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl px-4 text-[15px] font-semibold transition disabled:cursor-not-allowed disabled:opacity-45";
   const estilo =
     variante === "primario"
-      ? { background: "var(--ganho)", color: "#fff", border: "1px solid transparent" }
+      ? { background: "var(--marca-forte)", color: "var(--sobre-marca)", border: "1px solid transparent" }
       : variante === "secundario"
-        ? { background: "var(--surface-2)", color: "var(--text-1)", border: "1px solid var(--border)" }
-        : { background: "transparent", color: "var(--text-2)", border: "1px solid transparent" };
+        ? { background: "var(--surface-1)", color: "var(--marca)", border: "1px solid var(--marca)" }
+        : { background: "transparent", color: "var(--marca)", border: "1px solid transparent" };
   return (
     <button
       type={tipo}

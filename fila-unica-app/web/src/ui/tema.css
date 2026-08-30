@@ -6,9 +6,15 @@
  * tela do Dev B precisa mudar para o kit funcionar, e não há dependência nova no
  * `package.json` para o `npm ci` do Render tropeçar.
  *
- * A paleta base é a mesma do painel analítico (`app/src/app/globals.css`), que já
- * foi validada para daltonismo — o PLANO.md (P10) manda o sistema visual sobreviver
- * ao protótipo, e repintar aqui criaria duas identidades para o mesmo projeto.
+ * A paleta vem do matricula.rio, o site oficial de matrícula da SME-Rio: a família
+ * que usar isto já conhece aquele azul, e identidade emprestada da instituição é
+ * identidade que não precisa ser aprendida. Os mesmos tokens vivem em `index.css` e
+ * em `app/src/app/globals.css` — o PLANO.md (P10) manda o sistema visual sobreviver
+ * ao protótipo, e três paletas seriam três verdades.
+ *
+ * Herdamos a identidade, NÃO os defeitos. O `.btn-primary` do site é branco sobre o
+ * ciano #1bb5da, que dá 2.42:1 e reprova em AA; aqui o ciano é acento e borda, e
+ * preenchimento de botão é o azul profundo. Confira com `node devc/contraste.mjs`.
  *
  * Prefixo `fu-` (Fila Única) em tudo: o `index.css` do template do Vite ainda tem
  * regras globais em `h1`, `h2`, `p` e `#root`, e sem prefixo elas colidem.
@@ -19,89 +25,137 @@
 :root {
   color-scheme: light;
 
-  /* base, herdada do painel */
-  --surface-0: #f6f5f2;
-  --surface-1: #fcfcfb;
-  --surface-2: #efeeea;
-  --border:    #dedcd5;
-  --text-1:    #0b0b0b;   /* 18.1:1 sobre surface-0 */
-  --text-2:    #52514e;   /*  7.6:1 — corpo secundário */
-  --text-3:    #7d7b75;   /*  4.6:1 — mínimo AA para texto normal. Não use abaixo disto */
-  --fila:      #eb6834;
-  --ociosa:    #2a78d6;
-  --ganho:     #1baf7a;
-  --perda:     #e34948;
+  /* base — cinzas frios, para conviver com o azul institucional */
+  --surface-0: #f1f5f9;
+  --surface-1: #ffffff;
+  --surface-2: #e4ecf2;
+  --border:    #c2d2df;
+  --text-1:    #181818;   /* 16.2:1 sobre surface-0 */
+  --text-2:    #424242;   /*  9.2:1 — corpo secundário */
+  --text-3:    #5f6c78;   /*  4.8:1 — mínimo AA. Não use abaixo disto */
+
+  /* identidade da SME-Rio, tirada do matricula.rio */
+  --marca:              #00508a;   /* --deep-sea-blue do site */
+  --marca-escura:       #004a80;   /* --header-blue do site */
+  --marca-forte:        #034c7f;   /* o .btn-continuar do site */
+  --sobre-marca:        #ffffff;   /* texto sobre preenchimento de marca */
+  --sobre-marca-escura: #ffffff;   /* texto sobre a barra institucional */
+  --acento:             #1bb5da;   /* ciano do site: borda e realce */
+  --acento-escuro:      #008eb6;
+
+  /* séries de dado, compartilhadas com o painel */
+  --fila:      #bf4718;
+  --ociosa:    #0a6fb5;
+  --ganho:     #12805c;
+  --perda:     #c9342f;
+  --grid:      #dde6ee;
 
   /* estados por critério (RF2.3).
    * A cor NUNCA é o único sinal: todo chip carrega ícone e rótulo em texto
-   * (WCAG 1.4.1). Verde e vermelho são indistinguíveis em deuteranopia — quem
-   * separa os dois na tela é o ✓ contra o ! e a frase. A cor é reforço. */
-  --confirmado-fg:  #0f7350;   /* 4.8:1 sobre o próprio fundo */
-  --confirmado-bg:  #e6f6ef;
-  --confirmado-br:  #a8e0c8;
+   * (WCAG 1.4.1). O `pendente` saiu do azul para o ciano porque azul virou a cor
+   * da marca — estado e cromo institucional não podem ser a mesma coisa. */
+  --confirmado-fg:  #0f7350;
+  --confirmado-bg:  #e3f4ec;
+  --confirmado-br:  #a3ddc5;
 
-  --pendente-fg:    #1c5fae;   /* 5.1:1 */
-  --pendente-bg:    #e6f0fb;
-  --pendente-br:    #a9caee;
+  --pendente-fg:    #03657f;
+  --pendente-bg:    #e0f3f9;
+  --pendente-br:    #96d3e5;
 
-  --faltando-fg:    #b3282b;   /* 5.4:1 */
+  --faltando-fg:    #b3282b;
   --faltando-bg:    #fdecec;
   --faltando-br:    #f2b8b8;
 
-  --neutro-fg:      #52514e;
-  --neutro-bg:      #efeeea;
-  --neutro-br:      #dedcd5;
+  --neutro-fg:      #424242;
+  --neutro-bg:      #e4ecf2;
+  --neutro-br:      #c2d2df;
 
-  --foco:           #2a78d6;
-  --raio:           12px;
+  --foco:           #0a6fb5;
+  --raio:           10px;   /* o mesmo do .btn-continuar do matricula.rio */
 }
 
 @media (prefers-color-scheme: dark) {
   :root:where(:not([data-theme="light"])) {
     color-scheme: dark;
-    --surface-0: #121211;
-    --surface-1: #1a1a19;
-    --surface-2: #232322;
-    --border:    #35352f;
+    --surface-0: #0e1418;
+    --surface-1: #151d23;
+    --surface-2: #1e2830;
+    --border:    #35444f;
     --text-1:    #ffffff;
-    --text-2:    #c3c2b7;
-    --text-3:    #8e8d84;
-    --fila:      #d95926;
-    --ociosa:    #3987e5;
-    --ganho:     #199e70;
-    --perda:     #e66767;
+    --text-2:    #c2ced8;
+    --text-3:    #8fa0ad;
+
+    --marca:              #4aa3dc;
+    --marca-escura:       #0d2b42;
+    --marca-forte:        #5fb0e2;
+    /* Inverte no escuro: preenchimento claro pede texto escuro. A barra
+       institucional continua escura, e por isso tem token próprio. */
+    --sobre-marca:        #08131a;
+    --sobre-marca-escura: #ffffff;
+    --acento:             #3fc9e8;
+    --acento-escuro:      #1ba7c8;
+
+    --fila:      #e8783f;
+    --ociosa:    #4aa3dc;
+    --ganho:     #2fb98a;
+    --perda:     #eb7070;
+    --grid:      #263239;
 
     --confirmado-fg: #5fd6a6;
-    --confirmado-bg: #10261e;
-    --confirmado-br: #235f47;
+    --confirmado-bg: #0e2620;
+    --confirmado-br: #245f48;
 
-    --pendente-fg:   #7ab5f2;
-    --pendente-bg:   #10202f;
-    --pendente-br:   #245179;
+    --pendente-fg:   #5fc9e8;
+    --pendente-bg:   #0b242e;
+    --pendente-br:   #1d5a70;
 
     --faltando-fg:   #f39494;
-    --faltando-bg:   #2a1516;
-    --faltando-br:   #6e3234;
+    --faltando-bg:   #2a1517;
+    --faltando-br:   #6e3236;
 
-    --neutro-fg:     #c3c2b7;
-    --neutro-bg:     #232322;
-    --neutro-br:     #35352f;
+    --neutro-fg:     #c2ced8;
+    --neutro-bg:     #1e2830;
+    --neutro-br:     #35444f;
 
-    --foco:          #7ab5f2;
+    --foco:          #5fc9e8;
   }
 }
 
 /* Alternância manual, para o botão de tema e para testar os dois sem mexer no SO. */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --surface-0: #121211; --surface-1: #1a1a19; --surface-2: #232322;
-  --border: #35352f; --text-1: #ffffff; --text-2: #c3c2b7; --text-3: #8e8d84;
-  --fila: #d95926; --ociosa: #3987e5; --ganho: #199e70; --perda: #e66767;
-  --confirmado-fg: #5fd6a6; --confirmado-bg: #10261e; --confirmado-br: #235f47;
-  --pendente-fg:   #7ab5f2; --pendente-bg:   #10202f; --pendente-br:   #245179;
-  --faltando-fg:   #f39494; --faltando-bg:   #2a1516; --faltando-br:   #6e3234;
-  --neutro-fg: #c3c2b7; --neutro-bg: #232322; --neutro-br: #35352f;
-  --foco: #7ab5f2;
+  --surface-0: #0e1418;
+  --surface-1: #151d23;
+  --surface-2: #1e2830;
+  --border:    #35444f;
+  --text-1:    #ffffff;
+  --text-2:    #c2ced8;
+  --text-3:    #8fa0ad;
+  --marca:              #4aa3dc;
+  --marca-escura:       #0d2b42;
+  --marca-forte:        #5fb0e2;
+  --sobre-marca:        #08131a;
+  --sobre-marca-escura: #ffffff;
+  --acento:             #3fc9e8;
+  --acento-escuro:      #1ba7c8;
+  --fila:      #e8783f;
+  --ociosa:    #4aa3dc;
+  --ganho:     #2fb98a;
+  --perda:     #eb7070;
+  --grid:      #263239;
+  --confirmado-fg: #5fd6a6;
+  --confirmado-bg: #0e2620;
+  --confirmado-br: #245f48;
+  --pendente-fg:   #5fc9e8;
+  --pendente-bg:   #0b242e;
+  --pendente-br:   #1d5a70;
+  --faltando-fg:   #f39494;
+  --faltando-bg:   #2a1517;
+  --faltando-br:   #6e3236;
+  --neutro-fg:     #c2ced8;
+  --neutro-bg:     #1e2830;
+  --neutro-br:     #35444f;
+  --foco:          #5fc9e8;
 }
 
 /* Mapa tom → cor. Todo componente com `data-tom` herda os três de uma vez. */
@@ -144,27 +198,32 @@
 .fu-botao {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   min-height: 44px;            /* alvo de toque: a família preenche isto em pé, no ponto de ônibus */
-  padding: 10px 16px;
-  border-radius: 10px;
+  padding: 10px 18px;
+  border-radius: var(--raio);
   border: 1px solid transparent;
-  font: inherit; font-size: 15px; font-weight: 500; line-height: 1.2;
+  /* O matricula.rio usa `font-weight: bolder` no botão de continuar. 600 é o mesmo
+   * peso visual sem depender do que o navegador entende por "bolder". */
+  font: inherit; font-size: 15px; font-weight: 600; line-height: 1.2;
   cursor: pointer;
   transition: background-color .15s, opacity .15s, color .15s;
 }
 .fu-botao:disabled { opacity: .5; cursor: not-allowed; }
 .fu-botao--largura-total { width: 100%; }
 
-.fu-botao--primario { background: var(--text-1); color: var(--surface-0); }
-.fu-botao--primario:hover:not(:disabled) { opacity: .9; }
+.fu-botao--primario { background: var(--marca-forte); color: var(--sobre-marca); }
+.fu-botao--primario:hover:not(:disabled) { background: var(--marca-escura); }
 
-.fu-botao--secundario { background: var(--surface-1); color: var(--text-1); border-color: var(--border); }
+/* Contorno azul, como os botões de ação secundária do site. */
+.fu-botao--secundario {
+  background: var(--surface-1); color: var(--marca); border-color: var(--marca);
+}
 .fu-botao--secundario:hover:not(:disabled) { background: var(--surface-2); }
 
 .fu-botao--texto {
-  background: none; color: var(--text-2); padding: 10px 4px;
+  background: none; color: var(--marca); padding: 10px 4px;
   text-decoration: underline; text-underline-offset: 4px;
 }
-.fu-botao--texto:hover:not(:disabled) { color: var(--text-1); }
+.fu-botao--texto:hover:not(:disabled) { color: var(--marca-escura); }
 
 .fu-botao--perigo { background: var(--faltando-bg); color: var(--faltando-fg); border-color: var(--faltando-br); }
 .fu-botao--perigo:hover:not(:disabled) { filter: brightness(.95); }
@@ -545,3 +604,21 @@
   border: 1px dashed var(--border); border-radius: 8px;
   font-size: 12px; line-height: 1.45; color: var(--text-2);
 }
+
+/* ────────────────────────  cromo institucional  ──────────────────────── */
+
+/* Botão sobre a barra azul do cabeçalho. Não é o `.fu-botao`: aquele é controle de
+ * formulário e pinta com as cores de conteúdo, que sobre o azul somem. */
+.fu-sair {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 36px; padding: 6px 14px;
+  border: 1px solid rgb(255 255 255 / .45);
+  border-radius: var(--raio);
+  background: transparent;
+  color: var(--sobre-marca-escura);
+  font: inherit; font-size: 13px; font-weight: 600; line-height: 1.2;
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s;
+}
+.fu-sair:hover { background: rgb(255 255 255 / .14); border-color: rgb(255 255 255 / .75); }
+.fu-sair:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
