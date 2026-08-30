@@ -167,10 +167,12 @@ function calcularPendencias(
   const semLastro = respostas.filter((r) => r.declarado && r.situacao === "nao_comprovado");
   const pontosPerdidos = semLastro.reduce((s, r) => s + r.pontos_se_valer, 0);
   if (semLastro.length > 0) {
+    const um = semLastro.length === 1;
     p.push(
-      `${semLastro.length === 1 ? "1 critério declarado está" : `${semLastro.length} critérios declarados estão`} ` +
-        `sem comprovante e não vai${semLastro.length === 1 ? "" : "o"} pontuar. ` +
-        `São ${pontosPerdidos} ponto${pontosPerdidos === 1 ? "" : "s"} que você está deixando na mesa.`,
+      (um
+        ? "1 critério declarado está sem comprovante e não vai pontuar."
+        : `${semLastro.length} critérios declarados estão sem comprovante e não vão pontuar.`) +
+        ` São ${pontosPerdidos} ponto${pontosPerdidos === 1 ? "" : "s"} que você está deixando na mesa.`,
     );
   }
   return p;
