@@ -101,8 +101,11 @@ export async function rodar() {
      `pontos que contam = ${insc.pontuacao.pontos_que_contam} (so o que tem lastro)`);
   ok(insc.pontuacao.pontos_declarados > insc.pontuacao.pontos_que_contam,
      `declarados ${insc.pontuacao.pontos_declarados} > que contam ${insc.pontuacao.pontos_que_contam}`);
-  ok(insc.pendencias.some((p) => p.includes("pontos a menos")),
-     "pendencia explica quantos pontos ficam na mesa");
+  // AGENTS.md: nao asserte em prosa do servidor, que muda quando alguem melhora a frase.
+  // O que importa e existir pendencia e o numero fechar.
+  ok(insc.pendencias.length > 0, `${insc.pendencias.length} pendencia(s) sinalizadas`);
+  ok(insc.pontuacao.pontos_declarados - insc.pontuacao.pontos_que_contam === semBase.pontos,
+     `pontos na mesa = ${insc.pontuacao.pontos_declarados - insc.pontuacao.pontos_que_contam}, igual ao criterio sem lastro`);
 
   console.log("\n— modo degradado do cruzamento (AD-13) —");
   // Segunda conta, com CPF que o cruzamento NAO confirma: o CadUnico tem que cair
@@ -122,8 +125,8 @@ export async function rodar() {
   const rCad2 = i2b.respostas.find((r) => r.criterio_id === cad.id)!;
   ok(rCad2.situacao === "nao_comprovado" && rCad2.pontos_se_valer === cad.pontos,
      `CPF que a base nao confirma cai para nao_comprovado, e os ${cad.pontos} pts seguem visiveis`);
-  ok(i2b.pendencias.some((p) => p.includes(String(cad.pontos))),
-     "a pendencia diz o valor exato que a familia esta perdendo");
+  ok(i2b.pontuacao.pontos_declarados - i2b.pontuacao.pontos_que_contam === cad.pontos,
+     `a familia perde exatamente os ${cad.pontos} pontos do CadUnico por falta de validacao`);
 
   token.gravar(s.token); // volta para a primeira conta
 
