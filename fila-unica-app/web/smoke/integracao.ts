@@ -112,7 +112,7 @@ async function main() {
        `E7 barra CPF já inscrito -> ${e instanceof ErroDaApi ? e.codigo : "?"}`);
   }
 
-  console.log("\n— o que a tela precisa e a API ainda não expõe —");
+  console.log("\n— opções, critérios e finalização (E9, E10, E14) —");
   const ids = pag.itens.slice(0, 3).map((o) => o.id);
   try {
     const comOpcoes = await chamar<Inscricao>(ROTAS.opcoes(nova.id), {
@@ -127,23 +127,28 @@ async function main() {
   }
 
   try {
+    const comCriterios = await chamar<Inscricao>(ROTAS.criteriosDaInscricao(nova.id), {
+      metodo: "PUT", corpo: { declarados: cad ? [cad.id] : [] },
+    });
+    ok(comCriterios.respostas.some((r) => r.declarado),
+       "E10 grava os critérios declarados e devolve a Inscricao inteira");
+  } catch (e) {
+    const c = e instanceof ErroDaApi ? e.codigo : "?";
+    if (c === "NAO_ENCONTRADO") naoEntregue("E10 PUT /inscricoes/:id/criterios — não implementado");
+    else ok(false, `E10 falhou com ${c}`);
+  }
+
+  // E14 vem por ULTIMO de propósito: finalizar congela a inscrição, e qualquer E9 ou
+  // E10 depois disso é recusado com INSCRICAO_JA_ENVIADA. Isso é o comportamento
+  // correto pela regra R1 — na ordem trocada, parecia falha da API.
+  try {
     const fim = await chamar<Inscricao>(ROTAS.finalizar(nova.id), { metodo: "POST" });
     ok(!!fim.numero_sorteio, `E14 finaliza e devolve número de sorteio ${fim.numero_sorteio}`);
+    ok(fim.situacao !== "rascunho", `E14 muda a situação para "${fim.situacao}"`);
   } catch (e) {
     const c = e instanceof ErroDaApi ? e.codigo : "?";
     if (c === "NAO_ENCONTRADO") naoEntregue("E14 POST /inscricoes/:id/finalizar — não implementado (Revisar depende)");
     else ok(false, `E14 falhou com ${c}: ${e instanceof Error ? e.message : e}`);
-  }
-
-  try {
-    await chamar<Inscricao>(ROTAS.criteriosDaInscricao(nova.id), {
-      metodo: "PUT", corpo: { declarados: cad ? [cad.id] : [] },
-    });
-    console.log("  ok   E10 grava os critérios declarados");
-  } catch (e) {
-    const c = e instanceof ErroDaApi ? e.codigo : "?";
-    if (c === "NAO_ENCONTRADO") naoEntregue("E10 PUT /inscricoes/:id/criterios — não implementado (trilha do Dev C)");
-    else ok(false, `E10 falhou com ${c}`);
   }
 
   console.log(
