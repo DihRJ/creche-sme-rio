@@ -20,6 +20,22 @@ import Revisar from "./telas/Revisar";
 import Vulnerabilidades from "./telas/Vulnerabilidades";
 import { Botao } from "./telas/provisorio-ui";
 
+/** Engrenagem do acesso a conta. SVG inline: o projeto nao tem sprite de icones. */
+function Engrenagem() {
+  return (
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="3.2" stroke="currentColor" strokeWidth="1.7" />
+      <path
+        d="M19.9 14.6a1.7 1.7 0 0 0 .34 1.87l.06.06a2.05 2.05 0 1 1-2.9 2.9l-.06-.07a1.7 1.7 0 0 0-1.87-.33 1.7 1.7 0 0 0-1.03 1.55v.17a2.05 2.05 0 1 1-4.1 0v-.09a1.7 1.7 0 0 0-1.1-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2.05 2.05 0 1 1-2.9-2.9l.07-.06a1.7 1.7 0 0 0 .33-1.88 1.7 1.7 0 0 0-1.55-1.03h-.17a2.05 2.05 0 1 1 0-4.1h.09a1.7 1.7 0 0 0 1.55-1.1 1.7 1.7 0 0 0-.34-1.88l-.06-.06a2.05 2.05 0 1 1 2.9-2.9l.06.07a1.7 1.7 0 0 0 1.88.33h.08a1.7 1.7 0 0 0 1.03-1.55v-.17a2.05 2.05 0 1 1 4.1 0v.09a1.7 1.7 0 0 0 1.03 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2.05 2.05 0 1 1 2.9 2.9l-.07.06a1.7 1.7 0 0 0-.33 1.88v.08a1.7 1.7 0 0 0 1.55 1.03h.17a2.05 2.05 0 1 1 0 4.1h-.09a1.7 1.7 0 0 0-1.55 1.03Z"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 function Layout({ children }: { children: React.ReactNode }) {
   const { me, sair } = useSessao();
   return (
@@ -44,12 +60,18 @@ function Layout({ children }: { children: React.ReactNode }) {
           </Link>
           {me && (
             <div className="flex items-center gap-2">
+              {/* Nome + engrenagem sao UM alvo so, e a engrenagem aparece tambem no
+                  celular: com o nome escondido em telas pequenas, sem ela nao haveria
+                  como chegar em /conta pelo telefone — que e o acesso da maioria (RNF1).
+                  O `aria-label` carrega o nome porque `hidden` some para leitor de tela. */}
               <Link
                 to="/conta"
-                className="hidden max-w-[14ch] truncate text-[12px] underline sm:inline"
+                aria-label={`Minha conta de ${me.responsavel.nome}`}
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-xl px-2 text-[12px] transition hover:opacity-70"
                 style={{ color: "var(--text-3)" }}
               >
-                {me.responsavel.nome}
+                <span className="hidden max-w-[14ch] truncate sm:inline">{me.responsavel.nome}</span>
+                <Engrenagem />
               </Link>
               <Botao variante="fantasma" aoClicar={sair}>Sair</Botao>
             </div>
