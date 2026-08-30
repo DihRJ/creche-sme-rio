@@ -1,4 +1,7 @@
 dados/
+# ...mas os JSONs de seed do app da familia sao versionados: sem eles o seed
+# quebra no Render, que clona o repositorio e nao tem a pasta local.
+!fila-unica-app/server/dados/
 brief/
 node_modules/
 app/node_modules/
