@@ -7,7 +7,8 @@ import { ErroHttp, ok, rota } from "../http.ts";
 import { exigirDono, montarInscricao } from "../inscricao.ts";
 import { recalcularSituacoes } from "../criterios.ts";
 import { numeroDeSorteio } from "../sorteio.ts";
-import { GRUPAMENTOS, MAX_OPCOES, TURNOS, type Grupamento, type Turno } from "../contracts.gen.ts";
+import { molde } from "../explicacao.ts";
+import { GRUPAMENTOS, MAX_OPCOES, TURNOS, type Grupamento, type Resultado, type Turno } from "../contracts.gen.ts";
 
 export const inscricoes = Router();
 
@@ -81,6 +82,71 @@ inscricoes.get(
     const id = String(req.params.id);
     await exigirDono(id, autor(req));
     return ok(res, await montarInscricao(id));
+  }),
+);
+
+// ── E15 ───────────────────────────────────────────────────────────────
+// RF4.1: a família vê a nota de corte da unidade que queria, a pontuação dela e
+// o que teria acontecido se o critério declarado tivesse sido comprovado (RF4.3).
+// É o que torna a decisão explicável no balcão — um algoritmo que ninguém
+// consegue explicar não é adotável, por mais correto que seja.
+inscricoes.get(
+  "/inscricoes/:id/resultado",
+  exigeAuth,
+  rota(async (req, res) => {
+    const id = String(req.params.id);
+    await exigirDono(id, autor(req));
+    const inscricao = await montarInscricao(id);
+
+    const [rodada] = await sql<{ id: string }>(
+      `select r.id from rodada r where r.processo_ano = $1 order by r.numero desc limit 1`,
+      [inscricao.processo_ano],
+    );
+    if (!rodada)
+      throw new ErroHttp("NAO_ENCONTRADO", "O resultado ainda não saiu. Acompanhe o calendário do processo.");
+
+    const [aloc] = await sql<{ oferta_id: string; posicao: number | null }>(
+      `select oferta_id, posicao_preferencia posicao from alocacao where rodada_id = $1 and inscricao_id = $2`,
+      [rodada.id, id],
+    );
+
+    const cortes = await sql<{
+      oferta_id: string; pontos: number; candidatos: number; capacidade: number;
+    }>(
+      `select nc.oferta_id, nc.pontos, nc.candidatos, nc.capacidade
+         from nota_corte nc
+         join opcao o on o.oferta_id = nc.oferta_id and o.inscricao_id = $2
+        where nc.rodada_id = $1`,
+      [rodada.id, id],
+    );
+    const porOferta = new Map(cortes.map((c) => [c.oferta_id, c]));
+
+    const [expl] = await sql<{ texto: string; origem: "molde" | "modelo" }>(
+      `select texto, origem from explicacao where rodada_id = $1 and inscricao_id = $2`,
+      [rodada.id, id],
+    );
+
+    const minhaPontuacao = inscricao.pontuacao.pontos_que_contam;
+    const resultado: Resultado = {
+      alocada: !!aloc,
+      oferta: aloc ? (inscricao.opcoes.find((o) => o.oferta.id === aloc.oferta_id)?.oferta ?? null) : null,
+      posicao_preferencia: aloc?.posicao ?? null,
+      explicacao: expl?.texto ?? molde(inscricao, aloc?.posicao ?? null, porOferta),
+      origem_explicacao: expl?.origem ?? "molde",
+      detalhe_opcoes: inscricao.opcoes.map((o) => {
+        const c = porOferta.get(o.oferta.id);
+        return {
+          ordem: o.ordem,
+          unidade: o.oferta.unidade.nome,
+          capacidade: c?.capacidade ?? o.oferta.vagas_no_processo,
+          candidatos: c?.candidatos ?? 0,
+          nota_de_corte: c?.pontos ?? null,
+          sua_pontuacao: minhaPontuacao,
+          conseguiu: aloc?.oferta_id === o.oferta.id,
+        };
+      }),
+    };
+    return ok(res, resultado);
   }),
 );
 

@@ -275,6 +275,74 @@
 .fu-passo[data-estado="atual"]     .fu-passo__titulo { color: var(--text-1); font-weight: 600; }
 .fu-passos--vertical .fu-passo__titulo { padding-bottom: 20px; }
 
+/* ────────────────────────  critério (tela Vulnerabilidades)  ──────────────────────── */
+
+.fu-criterios { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+
+/* O rótulo inteiro é a área de toque — em 360px, acertar só a caixinha de 20px
+ * com o polegar é pedir para a família errar o critério que vale 51 pontos. */
+.fu-criterio__rotulo {
+  display: flex; gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.fu-criterio__caixa {
+  flex: none;
+  width: 22px; height: 22px;
+  margin-top: 1px;
+  accent-color: var(--ociosa);
+}
+
+.fu-criterio__corpo { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+
+.fu-criterio__linha { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+
+.fu-criterio__texto { font-size: 15px; line-height: 1.4; color: var(--text-1); }
+
+/* Os pontos ficam à direita, alinhados em coluna entre as linhas: a família
+ * compara 51 contra 2 de relance, e é essa comparação que carrega a tela. */
+.fu-criterio__pontos {
+  flex: none;
+  font-size: 15px; font-weight: 700; line-height: 1.4;
+  color: var(--text-1);
+  white-space: nowrap;
+}
+.fu-criterio__pontos[data-desempate="true"] { font-weight: 500; color: var(--text-3); font-size: 13px; }
+
+.fu-criterio__ajuda { margin: 0; font-size: 13px; line-height: 1.45; color: var(--text-2); }
+
+.fu-criterio__estado { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.fu-criterio__frase { font-size: 13px; line-height: 1.45; color: var(--tom-fg); }
+
+.fu-criterio__validacao { margin: 0; font-size: 12px; line-height: 1.45; color: var(--text-3); }
+
+/* Selecionado ganha borda de tom, não só fundo: em tema escuro o fundo sozinho
+ * quase não separa da superfície. */
+.fu-criterio[data-declarado="true"] { border-color: var(--tom-br); }
+
+/* ────────────────────────  rodapé de pontuação  ──────────────────────── */
+
+/* Gruda no fim da janela: é o contador que a família precisa ver enquanto marca,
+ * não depois de rolar 13 critérios. */
+.fu-rodape-pontos {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin-top: 16px;
+  padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
+  background: var(--surface-1);
+  border-top: 1px solid var(--border);
+  border-radius: var(--raio) var(--raio) 0 0;
+  box-shadow: 0 -6px 20px -12px rgb(0 0 0 / .35);
+}
+
+.fu-rodape-pontos__numeros { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.fu-rodape-pontos__valor { font-size: 28px; font-weight: 700; line-height: 1; color: var(--text-1); }
+.fu-rodape-pontos__de { font-size: 14px; color: var(--text-2); }
+.fu-rodape-pontos__perda { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: var(--faltando-fg); }
+.fu-rodape-pontos__ok { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: var(--confirmado-fg); }
+
 /* ────────────────────────────  acessibilidade  ──────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
