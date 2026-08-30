@@ -8,9 +8,11 @@ app/node_modules/
 app/.next/
 app/out/
 __pycache__/
-# so os screenshots do prototipo analitico; o app da familia versiona os seus assets
-/*.png
-app/**/*.png
+*.png
+# ...mas as imagens do app da familia sao versionadas: o build do Vite importa
+# direto delas, e sem o arquivo no repositorio o deploy quebra no clone.
+!fila-unica-app/web/src/assets/*.png
+!fila-unica-app/web/public/*.png
 .playwright-mcp/
 .DS_Store
 CLAUDE.md

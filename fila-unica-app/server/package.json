@@ -7,10 +7,11 @@
   },
   "scripts": {
     "sync": "cp ../contracts/api.ts src/contracts.gen.ts",
-    "dev": "npm run sync && tsx watch src/index.ts",
-    "start": "tsx src/index.ts",
+    "dev": "npm run sync && tsx watch --env-file-if-exists=.env src/index.ts",
+    "start": "tsx --env-file-if-exists=.env src/index.ts",
     "check": "npm run sync && tsc --noEmit",
-    "verifica": "node --env-file=.env verifica-conexao.mjs"
+    "verifica": "node --env-file=.env verifica-conexao.mjs",
+    "seed": "tsx --env-file-if-exists=.env src/seed.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",
